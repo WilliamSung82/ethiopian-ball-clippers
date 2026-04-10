@@ -1,0 +1,91 @@
+<h2>Design Overview: Ethiopian Ball Clippers</h2>
+<p class="subtitle">Architecture, visual system, and page structure</p>
+
+<div class="section">
+  <h3>Tech Stack</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+    <div style="padding: 16px; background: rgba(212,165,116,0.08); border-radius: 8px; border: 1px solid rgba(212,165,116,0.15);">
+      <div style="color: #d4a574; font-weight: 600; margin-bottom: 4px;">Core</div>
+      <div style="font-size: 0.9rem;">HTML5, CSS3 (custom properties), Vanilla JS (ES modules)</div>
+    </div>
+    <div style="padding: 16px; background: rgba(212,165,116,0.08); border-radius: 8px; border: 1px solid rgba(212,165,116,0.15);">
+      <div style="color: #d4a574; font-weight: 600; margin-bottom: 4px;">3D & Animation</div>
+      <div style="font-size: 0.9rem;">Three.js (3D scenes), GSAP + ScrollTrigger (scroll animations), Canvas API (particles)</div>
+    </div>
+    <div style="padding: 16px; background: rgba(212,165,116,0.08); border-radius: 8px; border: 1px solid rgba(212,165,116,0.15);">
+      <div style="color: #d4a574; font-weight: 600; margin-bottom: 4px;">Deploy</div>
+      <div style="font-size: 0.9rem;">Netlify (static hosting, form handling for inquiries/samples)</div>
+    </div>
+    <div style="padding: 16px; background: rgba(212,165,116,0.08); border-radius: 8px; border: 1px solid rgba(212,165,116,0.15);">
+      <div style="color: #d4a574; font-weight: 600; margin-bottom: 4px;">Assets</div>
+      <div style="font-size: 0.9rem;">CDN-loaded libs, optimized WebP images, Google Fonts</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Visual Design System</h3>
+  <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px;">
+    <div>
+      <div class="label">Color Palette</div>
+      <div style="display: flex; gap: 8px; margin-top: 8px;">
+        <div style="width: 48px; height: 48px; border-radius: 8px; background: #0a0705;" title="#0a0705"></div>
+        <div style="width: 48px; height: 48px; border-radius: 8px; background: #1a1208;" title="#1a1208"></div>
+        <div style="width: 48px; height: 48px; border-radius: 8px; background: #2a1f10;" title="#2a1f10"></div>
+        <div style="width: 48px; height: 48px; border-radius: 8px; background: #d4a574;" title="#d4a574"></div>
+        <div style="width: 48px; height: 48px; border-radius: 8px; background: #c8956e;" title="#c8956e"></div>
+        <div style="width: 48px; height: 48px; border-radius: 8px; background: #f5e6d3;" title="#f5e6d3"></div>
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 4px; font-size: 0.7rem; color: rgba(255,255,255,0.4);">
+        <div style="width: 48px; text-align: center;">bg-deep</div>
+        <div style="width: 48px; text-align: center;">bg-dark</div>
+        <div style="width: 48px; text-align: center;">bg-mid</div>
+        <div style="width: 48px; text-align: center;">gold</div>
+        <div style="width: 48px; text-align: center;">copper</div>
+        <div style="width: 48px; text-align: center;">cream</div>
+      </div>
+    </div>
+    <div>
+      <div class="label">Typography</div>
+      <div style="margin-top: 8px;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #d4a574;">Playfair Display</div>
+        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">Headings & hero text</div>
+        <div style="font-family: 'Inter', sans-serif; font-size: 1rem; margin-top: 8px; color: #f5e6d3;">Inter</div>
+        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4);">Body text & UI</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Animation Features</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+    <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+      <strong style="color: #d4a574;">Hero:</strong> 3D rotating coffee bean (Three.js), floating particle steam, cinematic text reveal
+    </div>
+    <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+      <strong style="color: #d4a574;">Scroll:</strong> Parallax layers, scroll-jacked origin map section, staggered card reveals
+    </div>
+    <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+      <strong style="color: #d4a574;">Cursor:</strong> Custom cursor with gold trail, magnetic hover on buttons, card tilt on mouse move
+    </div>
+    <div style="padding: 12px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+      <strong style="color: #d4a574;">Transitions:</strong> Page transitions with coffee-pour wipe effect, smooth section fades
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>5 Pages</h3>
+  <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+    <div style="padding: 10px 16px; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); border-radius: 20px; color: #d4a574; font-size: 0.85rem;">1. Home</div>
+    <div style="padding: 10px 16px; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); border-radius: 20px; color: #d4a574; font-size: 0.85rem;">2. Coffee Catalog</div>
+    <div style="padding: 10px 16px; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); border-radius: 20px; color: #d4a574; font-size: 0.85rem;">3. Coffee Detail</div>
+    <div style="padding: 10px 16px; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); border-radius: 20px; color: #d4a574; font-size: 0.85rem;">4. About / Our Story</div>
+    <div style="padding: 10px 16px; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); border-radius: 20px; color: #d4a574; font-size: 0.85rem;">5. Contact / Samples</div>
+  </div>
+</div>
+
+<div style="margin-top: 24px; padding: 16px; background: rgba(212,165,116,0.08); border: 1px solid rgba(212,165,116,0.2); border-radius: 8px; text-align: center;">
+  <p style="margin: 0; color: #d4a574;">Does this architecture and visual system look right? I'll show page mockups next.</p>
+</div>

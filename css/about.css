@@ -21,7 +21,7 @@
   margin-bottom: 32px;
   opacity: 0;
   transform: translateY(20px);
-  animation: badge-in 0.8s 0.3s var(--ease-out-expo) forwards;
+  animation: badge-in 0.8s 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 @keyframes badge-in {
   to { opacity: 1; transform: translateY(0); }
@@ -34,7 +34,7 @@
   max-width: 800px;
   opacity: 0;
   letter-spacing: 8px;
-  animation: title-in 1.2s 0.5s var(--ease-out-expo) forwards;
+  animation: title-in 1.2s 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 @keyframes title-in {
   to { opacity: 1; letter-spacing: 0px; }
@@ -49,7 +49,7 @@
   color: rgba(245, 230, 211, 0.45);
   line-height: 1.8;
   opacity: 0;
-  animation: badge-in 0.8s 0.8s var(--ease-out-expo) forwards;
+  animation: badge-in 0.8s 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 /* Scroll Indicator */
@@ -65,7 +65,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   opacity: 0;
-  animation: badge-in 0.8s 1.2s var(--ease-out-expo) forwards;
+  animation: badge-in 0.8s 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 .scroll-line {
   width: 1px;

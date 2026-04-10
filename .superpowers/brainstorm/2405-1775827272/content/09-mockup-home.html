@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page Mockup — Ethiopian Ball Clippers</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0705; color: #f5e6d3; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,7,5,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,165,116,0.1); }
+  .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: #d4a574; letter-spacing: 2px; }
+  .nav-logo span { color: #f5e6d3; font-weight: 300; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(245,230,211,0.6); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover { color: #d4a574; }
+
+  /* HERO */
+  .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(42,31,16,0.8) 0%, rgba(10,7,5,1) 70%); }
+  .hero-particles { position: absolute; inset: 0; }
+  .particle { position: absolute; width: 2px; height: 2px; background: rgba(212,165,116,0.3); border-radius: 50%; animation: float-up 8s infinite; }
+  @keyframes float-up { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 20% { opacity: 1; } 80% { opacity: 0.5; } 100% { transform: translateY(-20vh) scale(1.5); opacity: 0; } }
+
+  .hero-content { position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 0 24px; }
+  .hero-badge { display: inline-block; padding: 8px 20px; border: 1px solid rgba(212,165,116,0.3); border-radius: 24px; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: #d4a574; margin-bottom: 32px; }
+  .hero-title { font-family: 'Playfair Display', Georgia, serif; font-size: 5rem; line-height: 1.05; color: #f5e6d3; margin-bottom: 24px; }
+  .hero-title em { font-style: italic; color: #d4a574; }
+  .hero-sub { font-size: 1.1rem; color: rgba(245,230,211,0.5); max-width: 500px; margin: 0 auto 40px; line-height: 1.7; }
+  .hero-cta { display: inline-flex; gap: 16px; }
+  .btn-primary { padding: 16px 40px; background: linear-gradient(135deg, #d4a574, #c8956e); color: #0a0705; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: 4px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(212,165,116,0.3); }
+  .btn-secondary { padding: 16px 40px; background: transparent; color: #d4a574; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; border: 1px solid rgba(212,165,116,0.3); border-radius: 4px; cursor: pointer; transition: border-color 0.3s; }
+  .btn-secondary:hover { border-color: #d4a574; }
+  .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(245,230,211,0.3); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(212,165,116,0.5), transparent); animation: scroll-pulse 2s infinite; }
+  @keyframes scroll-pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+  /* 3D PLACEHOLDER */
+  .three-d-placeholder { position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(212,165,116,0.08) 0%, transparent 70%); display: flex; align-items: center; justify-content: center; }
+  .coffee-bean-mock { width: 180px; height: 260px; background: linear-gradient(145deg, #3d2a14, #2a1c0d); border-radius: 50%; transform: rotate(-20deg); position: relative; box-shadow: 0 0 80px rgba(212,165,116,0.15), inset 0 0 40px rgba(0,0,0,0.5); animation: bean-float 6s ease-in-out infinite; }
+  .coffee-bean-mock::after { content: ''; position: absolute; left: 50%; top: 15%; bottom: 15%; width: 2px; background: rgba(10,7,5,0.8); transform: translateX(-50%); border-radius: 1px; }
+  @keyframes bean-float { 0%,100% { transform: rotate(-20deg) translateY(0); } 50% { transform: rotate(-15deg) translateY(-20px); } }
+
+  /* FEATURED ORIGINS */
+  .section { padding: 120px 48px; }
+  .section-label { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: #d4a574; margin-bottom: 16px; }
+  .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: 3rem; color: #f5e6d3; margin-bottom: 16px; }
+  .section-sub { color: rgba(245,230,211,0.4); max-width: 500px; line-height: 1.7; margin-bottom: 60px; }
+
+  .origins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .origin-card { background: linear-gradient(145deg, rgba(26,18,8,0.8), rgba(10,7,5,0.9)); border: 1px solid rgba(212,165,116,0.08); border-radius: 12px; overflow: hidden; transition: transform 0.4s, border-color 0.4s; cursor: pointer; }
+  .origin-card:hover { transform: translateY(-8px); border-color: rgba(212,165,116,0.25); }
+  .origin-img { height: 220px; position: relative; overflow: hidden; }
+  .origin-img-bg { position: absolute; inset: 0; }
+  .origin-img-bg.ethiopia { background: linear-gradient(135deg, #2d4a1a, #1a2d0d); }
+  .origin-img-bg.kenya { background: linear-gradient(135deg, #4a1a1a, #2d0d0d); }
+  .origin-img-bg.rwanda { background: linear-gradient(135deg, #1a2d4a, #0d1a2d); }
+  .origin-country { position: absolute; bottom: 16px; left: 16px; font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: #f5e6d3; }
+  .origin-flag { position: absolute; top: 16px; right: 16px; font-size: 1.5rem; }
+  .origin-body { padding: 24px; }
+  .origin-region { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #d4a574; margin-bottom: 8px; }
+  .origin-desc { font-size: 0.9rem; color: rgba(245,230,211,0.5); line-height: 1.6; margin-bottom: 16px; }
+  .origin-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { padding: 4px 12px; background: rgba(212,165,116,0.08); border: 1px solid rgba(212,165,116,0.15); border-radius: 16px; font-size: 0.7rem; color: #d4a574; }
+
+  /* STATS */
+  .stats-section { background: linear-gradient(180deg, #0a0705 0%, #1a1208 50%, #0a0705 100%); padding: 100px 48px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; max-width: 900px; margin: 0 auto; text-align: center; }
+  .stat-number { font-family: 'Playfair Display', Georgia, serif; font-size: 3.5rem; color: #d4a574; margin-bottom: 8px; }
+  .stat-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,230,211,0.4); }
+
+  /* CTA BANNER */
+  .cta-banner { padding: 120px 48px; text-align: center; position: relative; overflow: hidden; }
+  .cta-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(212,165,116,0.06) 0%, transparent 70%); }
+  .cta-banner h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #f5e6d3; margin-bottom: 16px; position: relative; }
+  .cta-banner p { color: rgba(245,230,211,0.4); margin-bottom: 40px; position: relative; }
+
+  /* FOOTER */
+  .footer { padding: 60px 48px 40px; border-top: 1px solid rgba(212,165,116,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Playfair Display', Georgia, serif; color: #d4a574; font-size: 1rem; letter-spacing: 2px; }
+  .footer-copy { font-size: 0.75rem; color: rgba(245,230,211,0.3); }
+
+  /* MOCKUP LABEL */
+  .mockup-label { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 200; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); padding: 6px 20px; border-radius: 20px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #d4a574; backdrop-filter: blur(8px); }
+</style>
+</head>
+<body>
+
+<div class="mockup-label">Mockup 1/5 — Home Page</div>
+
+<nav class="nav">
+  <div class="nav-logo">ETHIOPIAN <span>BALL CLIPPERS</span></div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Coffees</a>
+    <a href="#">Our Story</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-particles">
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 25%; animation-delay: 1.5s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+    <div class="particle" style="left: 55%; animation-delay: 0.8s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 2.2s;"></div>
+    <div class="particle" style="left: 85%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 15%; animation-delay: 5s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 3.5s;"></div>
+  </div>
+  <div class="three-d-placeholder">
+    <div class="coffee-bean-mock"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Premium African Coffee for Turkish Brewing</div>
+    <h1 class="hero-title">From African <em>Origins</em> to Your Cezve</h1>
+    <p class="hero-sub">Curated single-origin coffees from Ethiopia, Kenya, Rwanda, and beyond — selected specifically for the art of Turkish coffee.</p>
+    <div class="hero-cta">
+      <button class="btn-primary">Explore Coffees</button>
+      <button class="btn-secondary">Request Samples</button>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">Featured Origins</div>
+  <h2 class="section-title">Where It All Begins</h2>
+  <p class="section-sub">Each origin tells a story. Each bean carries the soil, altitude, and hands that nurtured it.</p>
+
+  <div class="origins-grid">
+    <div class="origin-card">
+      <div class="origin-img">
+        <div class="origin-img-bg ethiopia"></div>
+        <div class="origin-flag">🇪🇹</div>
+        <div class="origin-country">Ethiopia</div>
+      </div>
+      <div class="origin-body">
+        <div class="origin-region">Yirgacheffe · Sidamo · Harrar</div>
+        <p class="origin-desc">The birthplace of coffee. Bright, floral, and complex — Ethiopian beans bring a depth to Turkish brewing that nothing else can match.</p>
+        <div class="origin-tags">
+          <span class="tag">Floral</span>
+          <span class="tag">Citrus</span>
+          <span class="tag">Berry</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="origin-card">
+      <div class="origin-img">
+        <div class="origin-img-bg kenya"></div>
+        <div class="origin-flag">🇰🇪</div>
+        <div class="origin-country">Kenya</div>
+      </div>
+      <div class="origin-body">
+        <div class="origin-region">Nyeri · Kirinyaga · Embu</div>
+        <p class="origin-desc">Bold and wine-like. Kenyan AA beans deliver a full-bodied cup with bright acidity — intense and unforgettable in a cezve.</p>
+        <div class="origin-tags">
+          <span class="tag">Wine</span>
+          <span class="tag">Blackcurrant</span>
+          <span class="tag">Bold</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="origin-card">
+      <div class="origin-img">
+        <div class="origin-img-bg rwanda"></div>
+        <div class="origin-flag">🇷🇼</div>
+        <div class="origin-country">Rwanda</div>
+      </div>
+      <div class="origin-body">
+        <div class="origin-region">Huye · Nyamasheke · Gakenke</div>
+        <p class="origin-desc">Silky and sweet. Rwandan beans bring caramel and stone fruit notes that create a smooth, luxurious Turkish coffee experience.</p>
+        <div class="origin-tags">
+          <span class="tag">Caramel</span>
+          <span class="tag">Peach</span>
+          <span class="tag">Smooth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-number">12+</div>
+      <div class="stat-label">African Origins</div>
+    </div>
+    <div>
+      <div class="stat-number">40+</div>
+      <div class="stat-label">Coffee Varieties</div>
+    </div>
+    <div>
+      <div class="stat-number">25+</div>
+      <div class="stat-label">Farm Partners</div>
+    </div>
+    <div>
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Direct Trade</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2>Ready to Transform Your Menu?</h2>
+  <p>Request a free sample pack and discover your next signature Turkish coffee.</p>
+  <button class="btn-primary">Request Free Samples</button>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">ETHIOPIAN BALL CLIPPERS</div>
+  <div class="footer-copy">© 2026 Ethiopian Ball Clippers. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

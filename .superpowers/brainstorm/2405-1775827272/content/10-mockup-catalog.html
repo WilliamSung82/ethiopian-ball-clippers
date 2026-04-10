@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalog Mockup — Ethiopian Ball Clippers</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0705; color: #f5e6d3; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,7,5,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,165,116,0.1); }
+  .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: #d4a574; letter-spacing: 2px; }
+  .nav-logo span { color: #f5e6d3; font-weight: 300; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(245,230,211,0.6); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+  .nav-links a.active { color: #d4a574; }
+
+  .mockup-label { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 200; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); padding: 6px 20px; border-radius: 20px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #d4a574; backdrop-filter: blur(8px); }
+
+  /* PAGE HEADER */
+  .page-header { padding: 140px 48px 60px; position: relative; overflow: hidden; }
+  .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(42,31,16,0.5) 0%, transparent 60%); }
+  .page-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 3.5rem; color: #f5e6d3; margin-bottom: 12px; position: relative; }
+  .page-header p { color: rgba(245,230,211,0.4); font-size: 1rem; position: relative; max-width: 500px; line-height: 1.7; }
+
+  /* FILTER BAR */
+  .filter-bar { padding: 0 48px 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .filter-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #d4a574; margin-right: 8px; }
+  .filter-btn { padding: 8px 20px; background: rgba(212,165,116,0.06); border: 1px solid rgba(212,165,116,0.12); border-radius: 24px; color: rgba(245,230,211,0.5); font-size: 0.8rem; cursor: pointer; transition: all 0.3s; }
+  .filter-btn:hover, .filter-btn.active { background: rgba(212,165,116,0.15); border-color: rgba(212,165,116,0.4); color: #d4a574; }
+  .filter-divider { width: 1px; height: 24px; background: rgba(212,165,116,0.12); margin: 0 8px; }
+  .search-input { padding: 8px 20px; background: rgba(212,165,116,0.06); border: 1px solid rgba(212,165,116,0.12); border-radius: 24px; color: #f5e6d3; font-size: 0.8rem; outline: none; width: 220px; margin-left: auto; transition: border-color 0.3s; }
+  .search-input::placeholder { color: rgba(245,230,211,0.25); }
+  .search-input:focus { border-color: rgba(212,165,116,0.4); }
+
+  /* COFFEE GRID */
+  .catalog-grid { padding: 0 48px 80px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; }
+
+  .coffee-card { background: linear-gradient(160deg, rgba(26,18,8,0.9), rgba(10,7,5,0.95)); border: 1px solid rgba(212,165,116,0.06); border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform 0.5s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, box-shadow 0.4s; position: relative; }
+  .coffee-card:hover { transform: translateY(-12px) scale(1.01); border-color: rgba(212,165,116,0.2); box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212,165,116,0.05); }
+
+  .card-img { height: 200px; position: relative; overflow: hidden; }
+  .card-gradient { position: absolute; inset: 0; }
+  .card-gradient.g1 { background: linear-gradient(135deg, #2d1a0a, #1a0e05, #3d2510); }
+  .card-gradient.g2 { background: linear-gradient(135deg, #1a2d0d, #0d1a08, #2d4a15); }
+  .card-gradient.g3 { background: linear-gradient(135deg, #2d0d1a, #1a0810, #4a1525); }
+  .card-gradient.g4 { background: linear-gradient(135deg, #0d1a2d, #081018, #15254a); }
+  .card-gradient.g5 { background: linear-gradient(135deg, #2d2d0d, #1a1a08, #4a4a15); }
+  .card-gradient.g6 { background: linear-gradient(135deg, #1a2d2d, #0d1a1a, #154a4a); }
+
+  .card-badge { position: absolute; top: 16px; left: 16px; padding: 4px 12px; background: rgba(212,165,116,0.2); border: 1px solid rgba(212,165,116,0.3); border-radius: 12px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #d4a574; backdrop-filter: blur(4px); }
+  .card-flag { position: absolute; top: 16px; right: 16px; font-size: 1.8rem; }
+  .card-quick { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; background: linear-gradient(to top, rgba(10,7,5,0.9), transparent); opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; }
+  .coffee-card:hover .card-quick { opacity: 1; transform: translateY(0); }
+  .card-quick-btn { padding: 8px 16px; background: rgba(212,165,116,0.2); border: 1px solid rgba(212,165,116,0.3); border-radius: 6px; color: #d4a574; font-size: 0.75rem; cursor: pointer; }
+
+  .card-body { padding: 24px; }
+  .card-origin { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #d4a574; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .card-origin::after { content: ''; flex: 1; height: 1px; background: rgba(212,165,116,0.15); }
+  .card-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: #f5e6d3; margin-bottom: 8px; }
+  .card-desc { font-size: 0.85rem; color: rgba(245,230,211,0.4); line-height: 1.6; margin-bottom: 16px; }
+
+  .card-meta { display: flex; gap: 20px; padding-top: 16px; border-top: 1px solid rgba(212,165,116,0.06); }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,211,0.25); }
+  .meta-value { font-size: 0.85rem; color: rgba(245,230,211,0.7); }
+
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+  .tag { padding: 3px 10px; background: rgba(212,165,116,0.06); border: 1px solid rgba(212,165,116,0.1); border-radius: 12px; font-size: 0.65rem; color: rgba(212,165,116,0.7); }
+
+  /* RATING DOTS */
+  .rating { display: flex; gap: 4px; align-items: center; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(212,165,116,0.2); }
+  .dot.filled { background: #d4a574; }
+
+  .footer { padding: 60px 48px 40px; border-top: 1px solid rgba(212,165,116,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Playfair Display', Georgia, serif; color: #d4a574; font-size: 1rem; letter-spacing: 2px; }
+  .footer-copy { font-size: 0.75rem; color: rgba(245,230,211,0.3); }
+</style>
+</head>
+<body>
+
+<div class="mockup-label">Mockup 2/5 — Coffee Catalog</div>
+
+<nav class="nav">
+  <div class="nav-logo">ETHIOPIAN <span>BALL CLIPPERS</span></div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" class="active">Coffees</a>
+    <a href="#">Our Story</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Our Coffees</h1>
+  <p>Explore our curated collection of African single-origin coffees, each selected for exceptional quality in Turkish brewing.</p>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Origin</span>
+  <button class="filter-btn active">All</button>
+  <button class="filter-btn">Ethiopia</button>
+  <button class="filter-btn">Kenya</button>
+  <button class="filter-btn">Rwanda</button>
+  <button class="filter-btn">Tanzania</button>
+  <button class="filter-btn">Uganda</button>
+  <button class="filter-btn">Burundi</button>
+  <div class="filter-divider"></div>
+  <span class="filter-label">Profile</span>
+  <button class="filter-btn">Fruity</button>
+  <button class="filter-btn">Floral</button>
+  <button class="filter-btn">Chocolatey</button>
+  <button class="filter-btn">Spiced</button>
+  <input class="search-input" placeholder="Search coffees...">
+</div>
+
+<div class="catalog-grid">
+
+  <div class="coffee-card">
+    <div class="card-img">
+      <div class="card-gradient g1"></div>
+      <div class="card-badge">Single Origin</div>
+      <div class="card-flag">🇪🇹</div>
+      <div class="card-quick"><button class="card-quick-btn">Quick View →</button></div>
+    </div>
+    <div class="card-body">
+      <div class="card-origin">Ethiopia · Yirgacheffe</div>
+      <div class="card-name">Yirgacheffe Kochere</div>
+      <div class="card-desc">Jasmine and bergamot with a honey-sweet finish. Naturally processed at 1,900m altitude.</div>
+      <div class="card-meta">
+        <div class="meta-item"><span class="meta-label">Roast</span><span class="meta-value">Light</span></div>
+        <div class="meta-item"><span class="meta-label">Altitude</span><span class="meta-value">1,900m</span></div>
+        <div class="meta-item"><span class="meta-label">Process</span><span class="meta-value">Natural</span></div>
+        <div class="meta-item"><span class="meta-label">Body</span>
+          <div class="rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+      </div>
+      <div class="card-tags"><span class="tag">Jasmine</span><span class="tag">Bergamot</span><span class="tag">Honey</span></div>
+    </div>
+  </div>
+
+  <div class="coffee-card">
+    <div class="card-img">
+      <div class="card-gradient g3"></div>
+      <div class="card-badge">Best Seller</div>
+      <div class="card-flag">🇰🇪</div>
+      <div class="card-quick"><button class="card-quick-btn">Quick View →</button></div>
+    </div>
+    <div class="card-body">
+      <div class="card-origin">Kenya · Nyeri</div>
+      <div class="card-name">Nyeri AA Gatomboya</div>
+      <div class="card-desc">Blackcurrant and grapefruit with a wine-like body. Washed process, SL28 varietal.</div>
+      <div class="card-meta">
+        <div class="meta-item"><span class="meta-label">Roast</span><span class="meta-value">Medium</span></div>
+        <div class="meta-item"><span class="meta-label">Altitude</span><span class="meta-value">1,850m</span></div>
+        <div class="meta-item"><span class="meta-label">Process</span><span class="meta-value">Washed</span></div>
+        <div class="meta-item"><span class="meta-label">Body</span>
+          <div class="rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+        </div>
+      </div>
+      <div class="card-tags"><span class="tag">Blackcurrant</span><span class="tag">Grapefruit</span><span class="tag">Wine</span></div>
+    </div>
+  </div>
+
+  <div class="coffee-card">
+    <div class="card-img">
+      <div class="card-gradient g4"></div>
+      <div class="card-badge">New Arrival</div>
+      <div class="card-flag">🇷🇼</div>
+      <div class="card-quick"><button class="card-quick-btn">Quick View →</button></div>
+    </div>
+    <div class="card-body">
+      <div class="card-origin">Rwanda · Huye Mountain</div>
+      <div class="card-name">Huye Red Bourbon</div>
+      <div class="card-desc">Peach and brown sugar with silky mouthfeel. Fully washed Red Bourbon from Huye cooperative.</div>
+      <div class="card-meta">
+        <div class="meta-item"><span class="meta-label">Roast</span><span class="meta-value">Medium</span></div>
+        <div class="meta-item"><span class="meta-label">Altitude</span><span class="meta-value">1,700m</span></div>
+        <div class="meta-item"><span class="meta-label">Process</span><span class="meta-value">Washed</span></div>
+        <div class="meta-item"><span class="meta-label">Body</span>
+          <div class="rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
+        </div>
+      </div>
+      <div class="card-tags"><span class="tag">Peach</span><span class="tag">Brown Sugar</span><span class="tag">Silky</span></div>
+    </div>
+  </div>
+
+  <div class="coffee-card">
+    <div class="card-img">
+      <div class="card-gradient g2"></div>
+      <div class="card-badge">Single Origin</div>
+      <div class="card-flag">🇹🇿</div>
+      <div class="card-quick"><button class="card-quick-btn">Quick View →</button></div>
+    </div>
+    <div class="card-body">
+      <div class="card-origin">Tanzania · Kilimanjaro</div>
+      <div class="card-name">Kilimanjaro Peaberry</div>
+      <div class="card-desc">Bright acidity with dark chocolate and black tea notes. Grown on volcanic slopes at high altitude.</div>
+      <div class="card-meta">
+        <div class="meta-item"><span class="meta-label">Roast</span><span class="meta-value">Medium-Dark</span></div>
+        <div class="meta-item"><span class="meta-label">Altitude</span><span class="meta-value">1,600m</span></div>
+        <div class="meta-item"><span class="meta-label">Process</span><span class="meta-value">Washed</span></div>
+        <div class="meta-item"><span class="meta-label">Body</span>
+          <div class="rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+        </div>
+      </div>
+      <div class="card-tags"><span class="tag">Chocolate</span><span class="tag">Black Tea</span><span class="tag">Bright</span></div>
+    </div>
+  </div>
+
+  <div class="coffee-card">
+    <div class="card-img">
+      <div class="card-gradient g5"></div>
+      <div class="card-badge">Limited</div>
+      <div class="card-flag">🇪🇹</div>
+      <div class="card-quick"><button class="card-quick-btn">Quick View →</button></div>
+    </div>
+    <div class="card-body">
+      <div class="card-origin">Ethiopia · Sidamo</div>
+      <div class="card-name">Sidamo Guji Natural</div>
+      <div class="card-desc">Blueberry explosion with dark chocolate undertones. Sun-dried natural process creates intense fruit-forward character.</div>
+      <div class="card-meta">
+        <div class="meta-item"><span class="meta-label">Roast</span><span class="meta-value">Light</span></div>
+        <div class="meta-item"><span class="meta-label">Altitude</span><span class="meta-value">2,100m</span></div>
+        <div class="meta-item"><span class="meta-label">Process</span><span class="meta-value">Natural</span></div>
+        <div class="meta-item"><span class="meta-label">Body</span>
+          <div class="rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+      </div>
+      <div class="card-tags"><span class="tag">Blueberry</span><span class="tag">Dark Chocolate</span><span class="tag">Fruity</span></div>
+    </div>
+  </div>
+
+  <div class="coffee-card">
+    <div class="card-img">
+      <div class="card-gradient g6"></div>
+      <div class="card-badge">Single Origin</div>
+      <div class="card-flag">🇧🇮</div>
+      <div class="card-quick"><button class="card-quick-btn">Quick View →</button></div>
+    </div>
+    <div class="card-body">
+      <div class="card-origin">Burundi · Kayanza</div>
+      <div class="card-name">Kayanza Long Miles</div>
+      <div class="card-desc">Red apple and vanilla with a clean, sweet finish. Grown by smallholders in Kayanza province.</div>
+      <div class="card-meta">
+        <div class="meta-item"><span class="meta-label">Roast</span><span class="meta-value">Medium</span></div>
+        <div class="meta-item"><span class="meta-label">Altitude</span><span class="meta-value">1,800m</span></div>
+        <div class="meta-item"><span class="meta-label">Process</span><span class="meta-value">Washed</span></div>
+        <div class="meta-item"><span class="meta-label">Body</span>
+          <div class="rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+        </div>
+      </div>
+      <div class="card-tags"><span class="tag">Red Apple</span><span class="tag">Vanilla</span><span class="tag">Clean</span></div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">ETHIOPIAN BALL CLIPPERS</div>
+  <div class="footer-copy">© 2026 Ethiopian Ball Clippers. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

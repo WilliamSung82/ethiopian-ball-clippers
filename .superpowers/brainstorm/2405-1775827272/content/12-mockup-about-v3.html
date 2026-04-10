@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Mockup v3 — Ethiopian Ball Clippers</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0705; color: #f5e6d3; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,7,5,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,165,116,0.1); }
+  .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: #d4a574; letter-spacing: 2px; }
+  .nav-logo span { color: #f5e6d3; font-weight: 300; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(245,230,211,0.6); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+  .nav-links a.active { color: #d4a574; }
+  .mockup-label { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 200; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); padding: 6px 20px; border-radius: 20px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #d4a574; backdrop-filter: blur(8px); }
+
+  /* ========== FLOATING COFFEE BACKGROUND ========== */
+  .floating-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
+  /* Coffee beans - MUCH more visible */
+  .fb { position: absolute; animation: drift linear infinite; }
+  .fb svg { filter: drop-shadow(0 0 8px rgba(212,165,116,0.3)); }
+  @keyframes drift {
+    0% { transform: translateY(110vh) rotate(0deg) scale(1); }
+    25% { transform: translateY(75vh) rotate(180deg) scale(1.1); }
+    50% { transform: translateY(45vh) rotate(360deg) scale(0.95); }
+    75% { transform: translateY(15vh) rotate(540deg) scale(1.05); }
+    100% { transform: translateY(-80px) rotate(720deg) scale(1); }
+  }
+
+  /* Swirling steam */
+  .steam { position: absolute; width: 3px; border-radius: 50%; animation: steam-swirl linear infinite; }
+  @keyframes steam-swirl {
+    0% { transform: translateY(100vh) translateX(0) scaleX(1); opacity: 0; }
+    10% { opacity: 0.6; }
+    30% { transform: translateY(65vh) translateX(30px) scaleX(2); opacity: 0.4; }
+    50% { transform: translateY(40vh) translateX(-20px) scaleX(4); opacity: 0.3; }
+    70% { transform: translateY(20vh) translateX(40px) scaleX(6); opacity: 0.2; }
+    100% { transform: translateY(-10vh) translateX(-10px) scaleX(8); opacity: 0; }
+  }
+
+  /* Coffee dust particles with glow */
+  .dust { position: absolute; border-radius: 50%; animation: dust-orbit ease-in-out infinite; }
+  @keyframes dust-orbit {
+    0% { transform: translate(0, 0) scale(0.5); opacity: 0.15; }
+    20% { transform: translate(50px, -30px) scale(1.5); opacity: 0.5; }
+    40% { transform: translate(-30px, -80px) scale(1); opacity: 0.35; }
+    60% { transform: translate(60px, -130px) scale(1.8); opacity: 0.45; }
+    80% { transform: translate(-40px, -180px) scale(0.8); opacity: 0.25; }
+    100% { transform: translate(20px, -230px) scale(0.5); opacity: 0.1; }
+  }
+
+  /* Falling coffee grounds */
+  .grounds { position: absolute; width: 2px; height: 2px; background: #8b6e50; border-radius: 50%; animation: fall linear infinite; }
+  @keyframes fall {
+    0% { transform: translateY(-20px) translateX(0) rotate(0); opacity: 0; }
+    10% { opacity: 0.4; }
+    50% { transform: translateY(50vh) translateX(20px) rotate(180deg); opacity: 0.3; }
+    100% { transform: translateY(100vh) translateX(-10px) rotate(360deg); opacity: 0; }
+  }
+
+  /* Pulsing ambient glow spots */
+  .ambient-glow { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(212,165,116,0.08) 0%, transparent 70%); animation: glow-drift ease-in-out infinite; pointer-events: none; }
+  @keyframes glow-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    33% { transform: translate(40px, -30px) scale(1.3); opacity: 0.7; }
+    66% { transform: translate(-30px, 20px) scale(0.8); opacity: 0.5; }
+  }
+
+  .content-layer { position: relative; z-index: 1; }
+
+  /* HERO */
+  .about-hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .about-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 60%, rgba(42,31,16,0.6) 0%, rgba(10,7,5,0.85) 70%); }
+  .about-hero-content { position: relative; text-align: center; max-width: 750px; padding: 0 24px; }
+  .about-badge { display: inline-block; padding: 8px 20px; border: 1px solid rgba(212,165,116,0.3); border-radius: 24px; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: #d4a574; margin-bottom: 32px; animation: badge-in 1s ease-out 0.3s both; }
+  @keyframes badge-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .about-hero-title { font-family: 'Playfair Display', Georgia, serif; font-size: 4.5rem; color: #f5e6d3; margin-bottom: 20px; line-height: 1.1; animation: title-in 1.2s ease-out 0.5s both; }
+  @keyframes title-in { from { opacity: 0; transform: translateY(40px); letter-spacing: 8px; } to { opacity: 1; transform: translateY(0); letter-spacing: 0; } }
+  .about-hero-title em { color: #d4a574; font-style: italic; }
+  .about-hero-sub { font-size: 1.1rem; color: rgba(245,230,211,0.5); line-height: 1.8; animation: sub-in 1s ease-out 0.8s both; }
+  @keyframes sub-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce-down 2s ease-in-out infinite; }
+  .scroll-indicator span { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(212,165,116,0.4); }
+  .scroll-arrow { width: 20px; height: 20px; border-right: 1px solid rgba(212,165,116,0.4); border-bottom: 1px solid rgba(212,165,116,0.4); transform: rotate(45deg); }
+  @keyframes bounce-down { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(12px); } }
+
+  /* MISSION */
+  .mission-section { padding: 120px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .mission-text h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #f5e6d3; margin-bottom: 24px; }
+  .mission-text p { font-size: 1rem; color: rgba(245,230,211,0.5); line-height: 1.8; margin-bottom: 16px; }
+
+  /* ========== ROUTE MAP SECTION ========== */
+  .route-section { padding: 120px 48px; position: relative; }
+  .route-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.8rem; color: #f5e6d3; margin-bottom: 16px; text-align: center; }
+  .route-sub { text-align: center; color: rgba(245,230,211,0.35); margin-bottom: 60px; }
+
+  .map-container { position: relative; max-width: 1100px; margin: 0 auto; border-radius: 24px; overflow: hidden; border: 1px solid rgba(212,165,116,0.1); background: #0d0906; }
+
+  .map-svg { width: 100%; display: block; }
+
+  /* Map pin styling */
+  .mpin { cursor: pointer; transition: transform 0.3s; }
+  .mpin:hover { transform: scale(1.2); }
+  .mpin-ring { animation: ring-pulse 2.5s ease-in-out infinite; }
+  @keyframes ring-pulse { 0%,100% { opacity: 0.6; r: 12; } 50% { opacity: 0; r: 24; } }
+
+  /* Tooltip overlay */
+  .map-tooltips { position: absolute; inset: 0; pointer-events: none; }
+  .mtip { position: absolute; width: 240px; background: rgba(20,14,8,0.95); border: 1px solid rgba(212,165,116,0.25); border-radius: 14px; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; backdrop-filter: blur(12px); box-shadow: 0 12px 40px rgba(0,0,0,0.5); z-index: 10; }
+  .mtip.show { opacity: 1; pointer-events: auto; }
+  .mtip h4 { font-family: 'Playfair Display', Georgia, serif; color: #f5e6d3; font-size: 1rem; margin-bottom: 6px; }
+  .mtip p { font-size: 0.78rem; color: rgba(245,230,211,0.5); line-height: 1.6; }
+  .mtip .ts { margin-top: 10px; font-size: 0.7rem; color: #d4a574; padding-top: 10px; border-top: 1px solid rgba(212,165,116,0.1); }
+
+  /* INTERACTIVE TIMELINE */
+  .timeline-section { padding: 120px 48px; }
+  .timeline-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.8rem; color: #f5e6d3; margin-bottom: 60px; text-align: center; }
+  .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+  .timeline-track { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); }
+  .timeline-track-bg { position: absolute; inset: 0; background: rgba(212,165,116,0.08); }
+  .timeline-track-fill { position: absolute; top: 0; left: 0; right: 0; height: 0; background: linear-gradient(to bottom, #d4a574, rgba(212,165,116,0.3)); animation: fill-track 3s ease-out 0.5s forwards; }
+  @keyframes fill-track { to { height: 100%; } }
+
+  .timeline-item { display: grid; grid-template-columns: 1fr 60px 1fr; margin-bottom: 80px; align-items: start; }
+  .timeline-item:nth-child(odd) .tl-content { grid-column: 1; text-align: right; padding-right: 40px; }
+  .timeline-item:nth-child(odd) .tl-date-col { grid-column: 2; }
+  .timeline-item:nth-child(odd) .tl-visual { grid-column: 3; }
+  .timeline-item:nth-child(even) .tl-visual { grid-column: 1; }
+  .timeline-item:nth-child(even) .tl-date-col { grid-column: 2; }
+  .timeline-item:nth-child(even) .tl-content { grid-column: 3; text-align: left; padding-left: 40px; }
+
+  .tl-date-col { display: flex; justify-content: center; }
+  .tl-node { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, rgba(212,165,116,0.2), rgba(200,149,110,0.1)); border: 2px solid #d4a574; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 2; animation: node-pop 0.5s ease-out both; }
+  .timeline-item:nth-child(1) .tl-node { animation-delay: 0.8s; }
+  .timeline-item:nth-child(2) .tl-node { animation-delay: 1.6s; }
+  .timeline-item:nth-child(3) .tl-node { animation-delay: 2.4s; }
+  @keyframes node-pop { from { transform: scale(0); } to { transform: scale(1); } }
+
+  .tl-content .tl-year { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #d4a574; margin-bottom: 8px; }
+  .tl-content h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: #f5e6d3; margin-bottom: 4px; }
+  .tl-content p { font-size: 0.9rem; color: rgba(245,230,211,0.4); line-height: 1.7; }
+  .tl-visual { padding: 0 40px; }
+  .tl-card { background: linear-gradient(145deg, rgba(26,18,8,0.6), rgba(10,7,5,0.8)); border: 1px solid rgba(212,165,116,0.08); border-radius: 16px; padding: 24px; transition: border-color 0.4s, transform 0.4s; }
+  .tl-card:hover { border-color: rgba(212,165,116,0.25); transform: scale(1.03); }
+  .tl-card-stat { display: flex; gap: 20px; }
+  .tl-stat { text-align: center; }
+  .tl-stat-val { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: #d4a574; }
+  .tl-stat-label { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,211,0.3); margin-top: 4px; }
+
+  /* VALUES FLIP */
+  .values-section { padding: 120px 48px; background: linear-gradient(180deg, rgba(10,7,5,0.9), rgba(26,18,8,0.4), rgba(10,7,5,0.9)); }
+  .values-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.8rem; color: #f5e6d3; margin-bottom: 16px; text-align: center; }
+  .values-sub { text-align: center; color: rgba(245,230,211,0.35); margin-bottom: 60px; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto; perspective: 1000px; }
+  .value-flip { height: 320px; cursor: pointer; }
+  .value-flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); transform-style: preserve-3d; }
+  .value-flip:hover .value-flip-inner { transform: rotateY(180deg); }
+  .value-front, .value-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 16px; border: 1px solid rgba(212,165,116,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 28px; text-align: center; }
+  .value-front { background: linear-gradient(160deg, rgba(26,18,8,0.7), rgba(10,7,5,0.9)); }
+  .value-back { background: linear-gradient(160deg, rgba(42,31,16,0.9), rgba(26,18,8,0.95)); border-color: rgba(212,165,116,0.2); transform: rotateY(180deg); }
+  .value-icon { font-size: 3rem; margin-bottom: 20px; }
+  .value-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: #f5e6d3; margin-bottom: 12px; }
+  .value-hint { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(212,165,116,0.4); margin-top: 16px; }
+  .value-back h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: #d4a574; margin-bottom: 16px; }
+  .value-back p { font-size: 0.85rem; color: rgba(245,230,211,0.55); line-height: 1.7; }
+  .value-back .back-stat { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(212,165,116,0.1); }
+  .value-back .back-stat strong { color: #d4a574; font-size: 1.5rem; font-family: 'Playfair Display', Georgia, serif; }
+  .value-back .back-stat span { display: block; font-size: 0.7rem; color: rgba(245,230,211,0.35); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+  /* PARTNERS */
+  .partners-section { padding: 120px 48px; }
+  .partners-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.8rem; color: #f5e6d3; margin-bottom: 16px; text-align: center; }
+  .partners-sub { text-align: center; color: rgba(245,230,211,0.35); margin-bottom: 60px; }
+  .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+  .partner-card { padding: 36px 28px; background: linear-gradient(145deg, rgba(26,18,8,0.5), rgba(10,7,5,0.7)); border: 1px solid rgba(212,165,116,0.06); border-radius: 16px; text-align: center; transition: all 0.5s cubic-bezier(0.23,1,0.32,1); position: relative; overflow: hidden; }
+  .partner-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(212,165,116,0.06) 0%, transparent 70%); opacity: 0; transition: opacity 0.4s; }
+  .partner-card:hover { border-color: rgba(212,165,116,0.25); transform: translateY(-12px) scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .partner-card:hover::before { opacity: 1; }
+  .partner-flag { font-size: 2.5rem; margin-bottom: 16px; transition: transform 0.5s; position: relative; }
+  .partner-card:hover .partner-flag { transform: scale(1.2) rotate(5deg); }
+  .partner-country { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: #f5e6d3; margin-bottom: 8px; position: relative; }
+  .partner-count { font-size: 0.8rem; color: #d4a574; margin-bottom: 8px; position: relative; }
+  .partner-regions { font-size: 0.75rem; color: rgba(245,230,211,0.3); line-height: 1.6; position: relative; }
+  .partner-expand { max-height: 0; overflow: hidden; transition: max-height 0.5s; position: relative; }
+  .partner-card:hover .partner-expand { max-height: 80px; }
+  .partner-expand p { font-size: 0.75rem; color: rgba(245,230,211,0.4); margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(212,165,116,0.1); line-height: 1.6; }
+
+  /* CTA */
+  .cta-section { padding: 120px 48px; text-align: center; position: relative; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(212,165,116,0.06) 0%, transparent 60%); }
+  .cta-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #f5e6d3; margin-bottom: 16px; position: relative; }
+  .cta-section p { color: rgba(245,230,211,0.4); margin-bottom: 40px; position: relative; }
+  .btn-primary { padding: 18px 44px; background: linear-gradient(135deg, #d4a574, #c8956e); color: #0a0705; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: 4px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(212,165,116,0.3); }
+
+  .footer { padding: 60px 48px 40px; border-top: 1px solid rgba(212,165,116,0.08); display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+  .footer-logo { font-family: 'Playfair Display', Georgia, serif; color: #d4a574; font-size: 1rem; letter-spacing: 2px; }
+  .footer-copy { font-size: 0.75rem; color: rgba(245,230,211,0.3); }
+</style>
+</head>
+<body>
+
+<!-- ========== FLOATING COFFEE BACKGROUND ========== -->
+<div class="floating-bg">
+  <!-- Large visible beans with warm color and glow -->
+  <div class="fb" style="left:3%; width:40px; height:60px; animation-duration:18s; animation-delay:0s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#8b6e50"/><ellipse cx="20" cy="30" rx="16" ry="26" fill="url(#bg1)"/><line x1="20" y1="6" x2="20" y2="54" stroke="#5a4530" stroke-width="2"/><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c8956e" stop-opacity="0.6"/><stop offset="100%" stop-color="#6b4a2e" stop-opacity="0.4"/></linearGradient></defs></svg>
+  </div>
+  <div class="fb" style="left:14%; width:32px; height:48px; animation-duration:24s; animation-delay:3s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#7a5c3e"/><line x1="20" y1="6" x2="20" y2="54" stroke="#5a4530" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:28%; width:36px; height:54px; animation-duration:20s; animation-delay:7s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#9a7e5e"/><line x1="20" y1="6" x2="20" y2="54" stroke="#6b5040" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:40%; width:28px; height:42px; animation-duration:26s; animation-delay:1s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#8b6e50"/><line x1="20" y1="6" x2="20" y2="54" stroke="#5a4530" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:55%; width:44px; height:66px; animation-duration:22s; animation-delay:5s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#a08060"/><ellipse cx="20" cy="30" rx="16" ry="26" fill="url(#bg2)"/><line x1="20" y1="6" x2="20" y2="54" stroke="#6b5040" stroke-width="2"/><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#d4a574" stop-opacity="0.4"/><stop offset="100%" stop-color="#6b4a2e" stop-opacity="0.3"/></linearGradient></defs></svg>
+  </div>
+  <div class="fb" style="left:68%; width:30px; height:45px; animation-duration:28s; animation-delay:9s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#7a5c3e"/><line x1="20" y1="6" x2="20" y2="54" stroke="#5a4530" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:82%; width:38px; height:57px; animation-duration:19s; animation-delay:11s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#9a7e5e"/><line x1="20" y1="6" x2="20" y2="54" stroke="#6b5040" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:93%; width:24px; height:36px; animation-duration:30s; animation-delay:4s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#8b6e50"/><line x1="20" y1="6" x2="20" y2="54" stroke="#5a4530" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:48%; width:34px; height:51px; animation-duration:32s; animation-delay:14s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#a08060"/><line x1="20" y1="6" x2="20" y2="54" stroke="#6b5040" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:8%; width:26px; height:39px; animation-duration:25s; animation-delay:16s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#8b7050"/><line x1="20" y1="6" x2="20" y2="54" stroke="#5a4530" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:75%; width:42px; height:63px; animation-duration:21s; animation-delay:8s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#9a7e5e"/><line x1="20" y1="6" x2="20" y2="54" stroke="#6b5040" stroke-width="2"/></svg>
+  </div>
+  <div class="fb" style="left:35%; width:30px; height:45px; animation-duration:27s; animation-delay:13s;">
+    <svg viewBox="0 0 40 60"><ellipse cx="20" cy="30" rx="16" ry="26" fill="#8b6e50"/><line x1="20" y1="6" x2="20" y2="54" stroke="#5a4530" stroke-width="2"/></svg>
+  </div>
+
+  <!-- Warm steam wisps -->
+  <div class="steam" style="left:10%; height:150px; background:linear-gradient(to top, rgba(212,165,116,0.2), transparent); animation-duration:10s; animation-delay:0s;"></div>
+  <div class="steam" style="left:25%; height:120px; background:linear-gradient(to top, rgba(200,149,110,0.18), transparent); animation-duration:13s; animation-delay:2s;"></div>
+  <div class="steam" style="left:42%; height:180px; background:linear-gradient(to top, rgba(212,165,116,0.15), transparent); animation-duration:15s; animation-delay:5s;"></div>
+  <div class="steam" style="left:58%; height:130px; background:linear-gradient(to top, rgba(200,149,110,0.2), transparent); animation-duration:11s; animation-delay:1s;"></div>
+  <div class="steam" style="left:75%; height:160px; background:linear-gradient(to top, rgba(212,165,116,0.17), transparent); animation-duration:14s; animation-delay:7s;"></div>
+  <div class="steam" style="left:90%; height:100px; background:linear-gradient(to top, rgba(200,149,110,0.15), transparent); animation-duration:12s; animation-delay:4s;"></div>
+
+  <!-- Golden dust particles -->
+  <div class="dust" style="left:6%; top:25%; width:4px; height:4px; background:rgba(212,165,116,0.5); animation-duration:7s; box-shadow:0 0 6px rgba(212,165,116,0.3);"></div>
+  <div class="dust" style="left:20%; top:50%; width:3px; height:3px; background:rgba(200,149,110,0.45); animation-duration:9s; animation-delay:1s; box-shadow:0 0 5px rgba(200,149,110,0.25);"></div>
+  <div class="dust" style="left:35%; top:70%; width:5px; height:5px; background:rgba(212,165,116,0.55); animation-duration:8s; animation-delay:2.5s; box-shadow:0 0 8px rgba(212,165,116,0.35);"></div>
+  <div class="dust" style="left:52%; top:35%; width:3px; height:3px; background:rgba(200,149,110,0.5); animation-duration:10s; animation-delay:1.5s; box-shadow:0 0 5px rgba(200,149,110,0.3);"></div>
+  <div class="dust" style="left:70%; top:60%; width:4px; height:4px; background:rgba(212,165,116,0.45); animation-duration:7s; animation-delay:3s; box-shadow:0 0 6px rgba(212,165,116,0.25);"></div>
+  <div class="dust" style="left:84%; top:20%; width:5px; height:5px; background:rgba(200,149,110,0.5); animation-duration:11s; animation-delay:0.5s; box-shadow:0 0 8px rgba(200,149,110,0.3);"></div>
+  <div class="dust" style="left:15%; top:85%; width:3px; height:3px; background:rgba(212,165,116,0.4); animation-duration:9s; animation-delay:4s; box-shadow:0 0 5px rgba(212,165,116,0.2);"></div>
+  <div class="dust" style="left:60%; top:15%; width:4px; height:4px; background:rgba(200,149,110,0.55); animation-duration:8s; animation-delay:6s; box-shadow:0 0 7px rgba(200,149,110,0.3);"></div>
+  <div class="dust" style="left:45%; top:90%; width:3px; height:3px; background:rgba(212,165,116,0.45); animation-duration:10s; animation-delay:2s; box-shadow:0 0 5px rgba(212,165,116,0.25);"></div>
+  <div class="dust" style="left:88%; top:45%; width:4px; height:4px; background:rgba(212,165,116,0.5); animation-duration:7s; animation-delay:5s; box-shadow:0 0 6px rgba(212,165,116,0.3);"></div>
+
+  <!-- Falling coffee grounds -->
+  <div class="grounds" style="left:12%; animation-duration:8s; animation-delay:0s;"></div>
+  <div class="grounds" style="left:30%; animation-duration:10s; animation-delay:2s;"></div>
+  <div class="grounds" style="left:50%; animation-duration:7s; animation-delay:4s;"></div>
+  <div class="grounds" style="left:65%; animation-duration:9s; animation-delay:1s;"></div>
+  <div class="grounds" style="left:80%; animation-duration:11s; animation-delay:3s;"></div>
+  <div class="grounds" style="left:22%; animation-duration:8s; animation-delay:5s;"></div>
+  <div class="grounds" style="left:72%; animation-duration:10s; animation-delay:6s;"></div>
+  <div class="grounds" style="left:40%; animation-duration:9s; animation-delay:7s;"></div>
+
+  <!-- Ambient glow spots -->
+  <div class="ambient-glow" style="left:10%; top:30%; width:300px; height:300px; animation-duration:12s;"></div>
+  <div class="ambient-glow" style="left:60%; top:50%; width:250px; height:250px; animation-duration:15s; animation-delay:3s;"></div>
+  <div class="ambient-glow" style="left:35%; top:70%; width:200px; height:200px; animation-duration:10s; animation-delay:6s;"></div>
+  <div class="ambient-glow" style="left:80%; top:20%; width:280px; height:280px; animation-duration:14s; animation-delay:2s;"></div>
+</div>
+
+<div class="content-layer">
+
+<div class="mockup-label">Mockup 4/5 — About / Our Story (v3)</div>
+
+<nav class="nav">
+  <div class="nav-logo">ETHIOPIAN <span>BALL CLIPPERS</span></div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Coffees</a>
+    <a href="#" class="active">Our Story</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<section class="about-hero">
+  <div class="about-hero-bg"></div>
+  <div class="about-hero-content">
+    <div class="about-badge">Our Story</div>
+    <h1 class="about-hero-title">Bridging Two <em>Coffee Cultures</em></h1>
+    <p class="about-hero-sub">From the highland farms of East Africa to the cezves of Turkish coffee houses — we connect the world's oldest coffee origins with its most revered brewing tradition.</p>
+  </div>
+  <div class="scroll-indicator"><span>Discover</span><div class="scroll-arrow"></div></div>
+</section>
+
+<section class="mission-section">
+  <div style="height:400px; border-radius:16px; background:linear-gradient(145deg, rgba(26,18,8,0.8), rgba(10,7,5,0.9)); border:1px solid rgba(212,165,116,0.06); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+    <div style="text-align:center; position:relative; z-index:1;">
+      <div style="font-size:5rem; margin-bottom:16px;">☕</div>
+      <div style="font-family:'Playfair Display',Georgia,serif; font-size:1.8rem; color:#d4a574; margin-bottom:8px;">From Bean to Cezve</div>
+      <div style="font-size:0.85rem; color:rgba(245,230,211,0.4);">Every cup tells a story of two continents</div>
+    </div>
+    <div style="position:absolute; inset:0; background:radial-gradient(circle at 50% 50%, rgba(212,165,116,0.06) 0%, transparent 60%);"></div>
+  </div>
+  <div class="mission-text">
+    <h2>The Journey</h2>
+    <p>Coffee was born in Ethiopia. For centuries, the highlands of East Africa have produced beans of extraordinary complexity — floral, fruity, layered with nuance. Yet most of this coffee disappears into commodity blends, its character lost.</p>
+    <p>Meanwhile, Turkish coffee — the world's most intimate brewing method — demands beans of exceptional quality. The ultra-fine grind and slow cezve extraction reveal every subtlety, every flaw.</p>
+    <p>Ethiopian Ball Clippers exists at this intersection. We source directly from cooperatives across Africa and deliver single-origin coffees specifically selected for Turkish brewing excellence.</p>
+  </div>
+</section>
+
+<!-- ========== REAL MAP SECTION ========== -->
+<section class="route-section">
+  <h2>The Route</h2>
+  <p class="route-sub">Hover over each origin to explore our sourcing partnerships</p>
+
+  <div class="map-container" id="mapBox">
+    <svg class="map-svg" viewBox="0 0 1100 620" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ocean background -->
+      <rect width="1100" height="620" fill="#0d1a1a"/>
+
+      <!-- Africa continent shape (simplified) -->
+      <path d="M 250 80 C 280 60, 380 50, 440 70 C 500 90, 530 80, 560 100 C 590 120, 600 100, 620 110 C 640 120, 650 140, 640 160 C 630 180, 610 190, 620 220 C 630 250, 640 280, 630 310 C 620 340, 600 370, 580 400 C 560 430, 530 450, 510 470 C 490 490, 470 510, 440 520 C 410 530, 380 520, 360 510 C 340 500, 330 480, 320 460 C 310 440, 290 430, 270 410 C 250 390, 240 360, 230 330 C 220 300, 200 270, 190 240 C 180 210, 170 190, 180 170 C 190 150, 210 140, 220 120 C 230 100, 240 90, 250 80 Z"
+        fill="#1a1208" stroke="rgba(212,165,116,0.12)" stroke-width="1"/>
+
+      <!-- East Africa detail (highlighted region) -->
+      <path d="M 500 180 C 520 170, 550 175, 560 190 C 570 205, 575 220, 570 240 C 565 260, 555 275, 540 290 C 525 305, 510 310, 495 305 C 480 300, 475 285, 480 265 C 485 245, 490 225, 495 205 C 498 195, 500 185, 500 180 Z"
+        fill="#2a1f10" stroke="rgba(212,165,116,0.2)" stroke-width="1"/>
+
+      <!-- Turkey / Middle East landmass -->
+      <path d="M 650 80 C 680 70, 720 65, 760 70 C 800 75, 840 80, 870 90 C 900 100, 910 110, 900 120 C 890 130, 860 135, 830 130 C 800 125, 780 130, 760 125 C 740 120, 720 115, 700 110 C 680 105, 660 100, 650 90 C 648 85, 648 82, 650 80 Z"
+        fill="#1a1208" stroke="rgba(212,165,116,0.12)" stroke-width="1"/>
+
+      <!-- Europe (partial) -->
+      <path d="M 350 30 C 400 20, 500 15, 580 25 C 620 30, 650 40, 660 55 C 665 65, 655 75, 640 78 C 620 80, 580 70, 550 68 C 500 65, 450 60, 400 55 C 380 52, 360 45, 350 35 Z"
+        fill="#1a1208" stroke="rgba(212,165,116,0.08)" stroke-width="0.5"/>
+
+      <!-- Arabian Peninsula -->
+      <path d="M 700 130 C 720 125, 750 130, 770 145 C 790 160, 800 185, 790 210 C 780 235, 760 250, 740 245 C 720 240, 710 220, 700 200 C 690 180, 690 155, 695 140 Z"
+        fill="#1a1208" stroke="rgba(212,165,116,0.08)" stroke-width="0.5"/>
+
+      <!-- Madagascar -->
+      <ellipse cx="600" cy="420" rx="15" ry="40" fill="#1a1208" stroke="rgba(212,165,116,0.08)" stroke-width="0.5" transform="rotate(-15 600 420)"/>
+
+      <!-- Grid lines -->
+      <line x1="0" y1="310" x2="1100" y2="310" stroke="rgba(212,165,116,0.04)" stroke-width="0.5" stroke-dasharray="8 4"/>
+      <line x1="550" y1="0" x2="550" y2="620" stroke="rgba(212,165,116,0.04)" stroke-width="0.5" stroke-dasharray="8 4"/>
+      <line x1="0" y1="155" x2="1100" y2="155" stroke="rgba(212,165,116,0.03)" stroke-width="0.5" stroke-dasharray="4 8"/>
+      <line x1="0" y1="465" x2="1100" y2="465" stroke="rgba(212,165,116,0.03)" stroke-width="0.5" stroke-dasharray="4 8"/>
+
+      <!-- Labels for water bodies -->
+      <text x="350" y="350" fill="rgba(212,165,116,0.06)" font-size="14" font-family="Inter, sans-serif" letter-spacing="8" font-style="italic">ATLANTIC OCEAN</text>
+      <text x="680" y="320" fill="rgba(212,165,116,0.06)" font-size="12" font-family="Inter, sans-serif" letter-spacing="6" font-style="italic">INDIAN OCEAN</text>
+      <text x="600" y="170" fill="rgba(212,165,116,0.05)" font-size="10" font-family="Inter, sans-serif" letter-spacing="4" font-style="italic">RED SEA</text>
+      <text x="720" y="165" fill="rgba(212,165,116,0.05)" font-size="9" font-family="Inter, sans-serif" letter-spacing="3" font-style="italic">PERSIAN GULF</text>
+
+      <!-- Animated route paths -->
+      <path d="M 530 220 C 560 200, 590 175, 620 145 C 650 115, 700 95, 780 85"
+        stroke="rgba(212,165,116,0.08)" stroke-width="3" fill="none" stroke-linecap="round" filter="blur(3px)"/>
+      <path d="M 530 220 C 560 200, 590 175, 620 145 C 650 115, 700 95, 780 85"
+        stroke="rgba(212,165,116,0.35)" stroke-width="1.5" fill="none" stroke-dasharray="6 4"
+        stroke-linecap="round">
+        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="4s" repeatCount="indefinite"/>
+      </path>
+
+      <!-- Traveling shipment dot -->
+      <circle r="4" fill="#d4a574" filter="url(#glow)">
+        <animateMotion dur="5s" repeatCount="indefinite" path="M 530 220 C 560 200, 590 175, 620 145 C 650 115, 700 95, 780 85"/>
+      </circle>
+      <circle r="8" fill="none" stroke="rgba(212,165,116,0.2)" stroke-width="1">
+        <animateMotion dur="5s" repeatCount="indefinite" path="M 530 220 C 560 200, 590 175, 620 145 C 650 115, 700 95, 780 85"/>
+      </circle>
+
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <!-- ORIGIN PINS -->
+      <!-- Ethiopia -->
+      <g class="mpin" onmouseover="showTip('ethiopia')" onmouseout="hideTip('ethiopia')">
+        <circle cx="540" cy="210" r="12" fill="none" stroke="rgba(212,165,116,0.3)" class="mpin-ring"/>
+        <circle cx="540" cy="210" r="6" fill="#d4a574" filter="url(#glow)"/>
+        <text x="540" y="198" text-anchor="middle" fill="#d4a574" font-size="16">🇪🇹</text>
+      </g>
+      <!-- Kenya -->
+      <g class="mpin" onmouseover="showTip('kenya')" onmouseout="hideTip('kenya')">
+        <circle cx="555" cy="260" r="12" fill="none" stroke="rgba(212,165,116,0.3)" class="mpin-ring" style="animation-delay:0.5s"/>
+        <circle cx="555" cy="260" r="6" fill="#d4a574" filter="url(#glow)"/>
+        <text x="555" y="248" text-anchor="middle" fill="#d4a574" font-size="16">🇰🇪</text>
+      </g>
+      <!-- Rwanda -->
+      <g class="mpin" onmouseover="showTip('rwanda')" onmouseout="hideTip('rwanda')">
+        <circle cx="520" cy="280" r="12" fill="none" stroke="rgba(212,165,116,0.3)" class="mpin-ring" style="animation-delay:1s"/>
+        <circle cx="520" cy="280" r="6" fill="#d4a574" filter="url(#glow)"/>
+        <text x="520" y="268" text-anchor="middle" fill="#d4a574" font-size="16">🇷🇼</text>
+      </g>
+      <!-- Tanzania -->
+      <g class="mpin" onmouseover="showTip('tanzania')" onmouseout="hideTip('tanzania')">
+        <circle cx="555" cy="300" r="12" fill="none" stroke="rgba(212,165,116,0.3)" class="mpin-ring" style="animation-delay:1.5s"/>
+        <circle cx="555" cy="300" r="6" fill="#d4a574" filter="url(#glow)"/>
+        <text x="555" y="288" text-anchor="middle" fill="#d4a574" font-size="16">🇹🇿</text>
+      </g>
+      <!-- Burundi -->
+      <g class="mpin" onmouseover="showTip('burundi')" onmouseout="hideTip('burundi')">
+        <circle cx="510" cy="275" r="12" fill="none" stroke="rgba(212,165,116,0.3)" class="mpin-ring" style="animation-delay:2s"/>
+        <circle cx="510" cy="275" r="5" fill="#c8956e" filter="url(#glow)"/>
+        <text x="510" y="263" text-anchor="middle" fill="#d4a574" font-size="14">🇧🇮</text>
+      </g>
+      <!-- Uganda -->
+      <g class="mpin" onmouseover="showTip('uganda')" onmouseout="hideTip('uganda')">
+        <circle cx="520" cy="240" r="12" fill="none" stroke="rgba(212,165,116,0.3)" class="mpin-ring" style="animation-delay:2.5s"/>
+        <circle cx="520" cy="240" r="5" fill="#c8956e" filter="url(#glow)"/>
+        <text x="520" y="228" text-anchor="middle" fill="#d4a574" font-size="14">🇺🇬</text>
+      </g>
+      <!-- Turkey (destination) -->
+      <g class="mpin" onmouseover="showTip('turkey')" onmouseout="hideTip('turkey')">
+        <circle cx="780" cy="85" r="14" fill="none" stroke="rgba(200,149,110,0.4)" class="mpin-ring"/>
+        <circle cx="780" cy="85" r="7" fill="#c8956e" filter="url(#glow)"/>
+        <text x="780" y="72" text-anchor="middle" fill="#c8956e" font-size="18">🇹🇷</text>
+        <text x="780" y="108" text-anchor="middle" fill="rgba(200,149,110,0.6)" font-size="9" font-family="Inter, sans-serif" letter-spacing="2">DESTINATION</text>
+      </g>
+
+      <!-- Region labels on the map -->
+      <text x="180" y="300" fill="rgba(212,165,116,0.08)" font-size="24" font-family="'Playfair Display', Georgia, serif" letter-spacing="6">AFRICA</text>
+      <text x="730" y="60" fill="rgba(212,165,116,0.08)" font-size="14" font-family="'Playfair Display', Georgia, serif" letter-spacing="4">TURKEY</text>
+    </svg>
+
+    <!-- Tooltip overlays -->
+    <div class="map-tooltips">
+      <div class="mtip" id="tip-ethiopia" style="left:52%; top:28%;">
+        <h4>🇪🇹 Ethiopia</h4>
+        <p>The birthplace of coffee. Heirloom varietals from 1,700–2,200m. Floral, fruity, extraordinarily complex.</p>
+        <div class="ts">12 cooperatives · 4,200+ farmers · Yirgacheffe, Sidamo, Harrar, Guji, Limu</div>
+      </div>
+      <div class="mtip" id="tip-kenya" style="left:55%; top:38%;">
+        <h4>🇰🇪 Kenya</h4>
+        <p>Bold, wine-like AA grades. SL28/SL34 varietals with intense blackcurrant and grapefruit character.</p>
+        <div class="ts">5 estates · Nyeri, Kirinyaga, Embu, Murang'a</div>
+      </div>
+      <div class="mtip" id="tip-rwanda" style="left:42%; top:42%;">
+        <h4>🇷🇼 Rwanda</h4>
+        <p>Silky Red Bourbons known for caramel sweetness and stone fruit. Clean, luxurious body.</p>
+        <div class="ts">4 cooperatives · 1,700m+ · Huye, Nyamasheke, Gakenke</div>
+      </div>
+      <div class="mtip" id="tip-tanzania" style="left:55%; top:46%;">
+        <h4>🇹🇿 Tanzania</h4>
+        <p>Volcanic Peaberry from Kilimanjaro slopes. Bright acidity with dark chocolate and black tea.</p>
+        <div class="ts">3 estates · Kilimanjaro, Arusha, Mbeya</div>
+      </div>
+      <div class="mtip" id="tip-burundi" style="left:40%; top:38%;">
+        <h4>🇧🇮 Burundi</h4>
+        <p>Hidden gem. Clean, sweet cups with red apple and vanilla notes from highland smallholders.</p>
+        <div class="ts">2 cooperatives · Kayanza, Ngozi</div>
+      </div>
+      <div class="mtip" id="tip-uganda" style="left:42%; top:32%;">
+        <h4>🇺🇬 Uganda</h4>
+        <p>Mountain Arabica with full body. Nutty, chocolatey depth perfect for Turkish brewing.</p>
+        <div class="ts">2 cooperatives · Mount Elgon, Rwenzori</div>
+      </div>
+      <div class="mtip" id="tip-turkey" style="left:68%; top:8%;">
+        <h4>🇹🇷 Turkey — Destination</h4>
+        <p>Where African origins meet the art of cezve brewing. Serving independent Turkish coffee shops.</p>
+        <div class="ts">Your cezve awaits ☕</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <h2>Our Journey</h2>
+  <div class="timeline">
+    <div class="timeline-track"><div class="timeline-track-bg"></div><div class="timeline-track-fill"></div></div>
+    <div class="timeline-item">
+      <div class="tl-content"><div class="tl-year">2024</div><h3>The First Cezve</h3><p>A chance encounter with Ethiopian Yirgacheffe brewed in a cezve changed everything. The floral notes were unlike anything we'd tasted.</p></div>
+      <div class="tl-date-col"><div class="tl-node">☕</div></div>
+      <div class="tl-visual"><div class="tl-card"><div class="tl-card-stat"><div class="tl-stat"><div class="tl-stat-val">1</div><div class="tl-stat-label">Origin</div></div><div class="tl-stat"><div class="tl-stat-val">1</div><div class="tl-stat-label">Cezve</div></div><div class="tl-stat"><div class="tl-stat-val">∞</div><div class="tl-stat-label">Inspiration</div></div></div></div></div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-visual"><div class="tl-card"><div class="tl-card-stat"><div class="tl-stat"><div class="tl-stat-val">6</div><div class="tl-stat-label">Countries</div></div><div class="tl-stat"><div class="tl-stat-val">12</div><div class="tl-stat-label">Partners</div></div><div class="tl-stat"><div class="tl-stat-val">200+</div><div class="tl-stat-label">Cuppings</div></div></div></div></div>
+      <div class="tl-date-col"><div class="tl-node">🌍</div></div>
+      <div class="tl-content"><div class="tl-year">2025</div><h3>Direct Sourcing</h3><p>First trips to Ethiopia and Kenya. Built relationships with cooperatives. Cupping sessions with Turkish coffee shop owners.</p></div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-content"><div class="tl-year">2026</div><h3>We Launch</h3><p>Full catalog of 40+ coffees, each scored for Turkish brewing. Direct partnerships with 25+ cooperatives across 6 countries.</p></div>
+      <div class="tl-date-col"><div class="tl-node">🚀</div></div>
+      <div class="tl-visual"><div class="tl-card"><div class="tl-card-stat"><div class="tl-stat"><div class="tl-stat-val">40+</div><div class="tl-stat-label">Coffees</div></div><div class="tl-stat"><div class="tl-stat-val">25+</div><div class="tl-stat-label">Partners</div></div><div class="tl-stat"><div class="tl-stat-val">100%</div><div class="tl-stat-label">Direct</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES FLIP -->
+<section class="values-section">
+  <h2>What We Stand For</h2>
+  <p class="values-sub">Hover to learn more</p>
+  <div class="values-grid">
+    <div class="value-flip"><div class="value-flip-inner">
+      <div class="value-front"><div class="value-icon">🤝</div><div class="value-title">Direct Trade</div><div class="value-hint">Hover to explore →</div></div>
+      <div class="value-back"><h3>Direct Trade</h3><p>No middlemen, no commodity markets. Every dollar reaches the farmers.</p><div class="back-stat"><strong>87%</strong><span>More income to farmers</span></div></div>
+    </div></div>
+    <div class="value-flip"><div class="value-flip-inner">
+      <div class="value-front"><div class="value-icon">🔬</div><div class="value-title">Turkish-Optimized</div><div class="value-hint">Hover to explore →</div></div>
+      <div class="value-back"><h3>Turkish-Optimized</h3><p>Every coffee cupped through a cezve. Scoring aroma, foam, and body for Turkish brewing.</p><div class="back-stat"><strong>200+</strong><span>Cuppings per season</span></div></div>
+    </div></div>
+    <div class="value-flip"><div class="value-flip-inner">
+      <div class="value-front"><div class="value-icon">🌱</div><div class="value-title">Sustainability</div><div class="value-hint">Hover to explore →</div></div>
+      <div class="value-back"><h3>Sustainability</h3><p>Shade-grown, organic-compatible farming. Carbon-offset shipping on every order.</p><div class="back-stat"><strong>100%</strong><span>Shade-grown sourcing</span></div></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-section">
+  <h2>Our Origins</h2>
+  <p class="partners-sub">Hover to discover each sourcing region</p>
+  <div class="partners-grid">
+    <div class="partner-card"><div class="partner-flag">🇪🇹</div><div class="partner-country">Ethiopia</div><div class="partner-count">12 cooperatives</div><div class="partner-regions">Yirgacheffe · Sidamo · Harrar · Guji · Limu</div><div class="partner-expand"><p>Birthplace of coffee. Heirloom varietals from 1,700–2,200m altitude.</p></div></div>
+    <div class="partner-card"><div class="partner-flag">🇰🇪</div><div class="partner-country">Kenya</div><div class="partner-count">5 estates</div><div class="partner-regions">Nyeri · Kirinyaga · Embu</div><div class="partner-expand"><p>SL28/SL34 varietals with bold, wine-like character.</p></div></div>
+    <div class="partner-card"><div class="partner-flag">🇷🇼</div><div class="partner-country">Rwanda</div><div class="partner-count">4 cooperatives</div><div class="partner-regions">Huye · Nyamasheke · Gakenke</div><div class="partner-expand"><p>Red Bourbon excellence. Silky body and caramel sweetness.</p></div></div>
+    <div class="partner-card"><div class="partner-flag">🇹🇿</div><div class="partner-country">Tanzania</div><div class="partner-count">3 estates</div><div class="partner-regions">Kilimanjaro · Arusha · Mbeya</div><div class="partner-expand"><p>Volcanic Peaberry with chocolate and black tea complexity.</p></div></div>
+    <div class="partner-card"><div class="partner-flag">🇧🇮</div><div class="partner-country">Burundi</div><div class="partner-count">2 cooperatives</div><div class="partner-regions">Kayanza · Ngozi</div><div class="partner-expand"><p>Clean, sweet cups with red apple and vanilla notes.</p></div></div>
+    <div class="partner-card"><div class="partner-flag">🇺🇬</div><div class="partner-country">Uganda</div><div class="partner-count">2 cooperatives</div><div class="partner-regions">Mt. Elgon · Rwenzori</div><div class="partner-expand"><p>Full-bodied with nutty, chocolatey depth.</p></div></div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to Taste the Difference?</h2>
+  <p>Request a free sample pack and discover your next signature Turkish coffee.</p>
+  <button class="btn-primary">Request Free Samples</button>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">ETHIOPIAN BALL CLIPPERS</div>
+  <div class="footer-copy">© 2026 Ethiopian Ball Clippers. All rights reserved.</div>
+</footer>
+
+</div><!-- /content-layer -->
+
+<script>
+function showTip(id) { document.getElementById('tip-' + id).classList.add('show'); }
+function hideTip(id) { document.getElementById('tip-' + id).classList.remove('show'); }
+</script>
+
+</body>
+</html>

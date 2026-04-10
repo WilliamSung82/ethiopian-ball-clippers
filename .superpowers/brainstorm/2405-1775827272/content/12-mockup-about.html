@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Mockup — Ethiopian Ball Clippers</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0705; color: #f5e6d3; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,7,5,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,165,116,0.1); }
+  .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; color: #d4a574; letter-spacing: 2px; }
+  .nav-logo span { color: #f5e6d3; font-weight: 300; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(245,230,211,0.6); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+  .nav-links a.active { color: #d4a574; }
+
+  .mockup-label { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 200; background: rgba(212,165,116,0.15); border: 1px solid rgba(212,165,116,0.3); padding: 6px 20px; border-radius: 20px; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #d4a574; backdrop-filter: blur(8px); }
+
+  /* HERO */
+  .about-hero { height: 70vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .about-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 60%, rgba(42,31,16,0.6) 0%, rgba(10,7,5,1) 70%); }
+  .about-hero-content { position: relative; text-align: center; max-width: 700px; padding: 0 24px; }
+  .about-badge { display: inline-block; padding: 8px 20px; border: 1px solid rgba(212,165,116,0.3); border-radius: 24px; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: #d4a574; margin-bottom: 32px; }
+  .about-hero-title { font-family: 'Playfair Display', Georgia, serif; font-size: 4rem; color: #f5e6d3; margin-bottom: 20px; line-height: 1.1; }
+  .about-hero-title em { color: #d4a574; font-style: italic; }
+  .about-hero-sub { font-size: 1.1rem; color: rgba(245,230,211,0.45); line-height: 1.8; }
+
+  /* MISSION */
+  .mission-section { padding: 100px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .mission-visual { height: 400px; border-radius: 16px; background: linear-gradient(145deg, rgba(26,18,8,0.8), rgba(10,7,5,0.9)); border: 1px solid rgba(212,165,116,0.06); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .mission-map { width: 80%; height: 70%; position: relative; }
+  .map-line { position: absolute; top: 40%; left: 20%; width: 60%; height: 2px; background: linear-gradient(90deg, #d4a574, transparent 40%, transparent 60%, #c8956e); }
+  .map-dot { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #d4a574; box-shadow: 0 0 20px rgba(212,165,116,0.4); }
+  .map-dot::after { content: ''; position: absolute; inset: -6px; border: 1px solid rgba(212,165,116,0.3); border-radius: 50%; animation: ping 2s infinite; }
+  @keyframes ping { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+  .map-dot.africa { top: 35%; left: 18%; }
+  .map-dot.turkey { top: 30%; right: 18%; }
+  .map-label { position: absolute; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,230,211,0.5); }
+  .map-label.l-africa { top: 52%; left: 12%; }
+  .map-label.l-turkey { top: 22%; right: 12%; }
+  .map-continent { position: absolute; font-size: 4rem; opacity: 0.15; }
+  .map-continent.c-africa { top: 20%; left: 10%; }
+  .map-continent.c-turkey { top: 15%; right: 10%; }
+
+  .mission-text h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #f5e6d3; margin-bottom: 24px; }
+  .mission-text p { font-size: 1rem; color: rgba(245,230,211,0.5); line-height: 1.8; margin-bottom: 16px; }
+
+  /* TIMELINE */
+  .timeline-section { padding: 100px 48px; position: relative; }
+  .timeline-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #f5e6d3; margin-bottom: 60px; text-align: center; }
+
+  .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+  .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, rgba(212,165,116,0.3), rgba(212,165,116,0.3), transparent); }
+
+  .timeline-item { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 60px; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: 50%; top: 24px; width: 12px; height: 12px; border-radius: 50%; background: #0a0705; border: 2px solid #d4a574; transform: translateX(-50%); z-index: 2; }
+
+  .timeline-date { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; color: #d4a574; text-align: right; padding-top: 16px; }
+  .timeline-content { padding: 20px 28px; background: linear-gradient(145deg, rgba(26,18,8,0.5), rgba(10,7,5,0.7)); border: 1px solid rgba(212,165,116,0.08); border-radius: 12px; }
+  .timeline-content h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; color: #f5e6d3; margin-bottom: 8px; }
+  .timeline-content p { font-size: 0.85rem; color: rgba(245,230,211,0.4); line-height: 1.7; }
+
+  /* VALUES */
+  .values-section { padding: 100px 48px; background: linear-gradient(180deg, #0a0705, #1a1208, #0a0705); }
+  .values-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #f5e6d3; margin-bottom: 60px; text-align: center; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto; }
+  .value-card { text-align: center; padding: 48px 32px; background: rgba(10,7,5,0.5); border: 1px solid rgba(212,165,116,0.06); border-radius: 16px; transition: border-color 0.4s, transform 0.4s; }
+  .value-card:hover { border-color: rgba(212,165,116,0.2); transform: translateY(-8px); }
+  .value-icon { font-size: 2.5rem; margin-bottom: 20px; }
+  .value-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; color: #f5e6d3; margin-bottom: 12px; }
+  .value-desc { font-size: 0.85rem; color: rgba(245,230,211,0.4); line-height: 1.7; }
+
+  /* PARTNERS MAP */
+  .partners-section { padding: 100px 48px; }
+  .partners-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: #f5e6d3; margin-bottom: 16px; text-align: center; }
+  .partners-sub { text-align: center; color: rgba(245,230,211,0.4); margin-bottom: 60px; }
+  .partners-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+  .partner-card { padding: 28px; background: linear-gradient(145deg, rgba(26,18,8,0.5), rgba(10,7,5,0.7)); border: 1px solid rgba(212,165,116,0.06); border-radius: 12px; text-align: center; transition: border-color 0.3s; }
+  .partner-card:hover { border-color: rgba(212,165,116,0.2); }
+  .partner-flag { font-size: 2rem; margin-bottom: 12px; }
+  .partner-country { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; color: #f5e6d3; margin-bottom: 4px; }
+  .partner-count { font-size: 0.75rem; color: #d4a574; }
+  .partner-regions { font-size: 0.75rem; color: rgba(245,230,211,0.3); margin-top: 8px; }
+
+  .footer { padding: 60px 48px 40px; border-top: 1px solid rgba(212,165,116,0.08); display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Playfair Display', Georgia, serif; color: #d4a574; font-size: 1rem; letter-spacing: 2px; }
+  .footer-copy { font-size: 0.75rem; color: rgba(245,230,211,0.3); }
+</style>
+</head>
+<body>
+
+<div class="mockup-label">Mockup 4/5 — About / Our Story</div>
+
+<nav class="nav">
+  <div class="nav-logo">ETHIOPIAN <span>BALL CLIPPERS</span></div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Coffees</a>
+    <a href="#" class="active">Our Story</a>
+    <a href="#">Blog</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<section class="about-hero">
+  <div class="about-hero-bg"></div>
+  <div class="about-hero-content">
+    <div class="about-badge">Our Story</div>
+    <h1 class="about-hero-title">Bridging Two <em>Coffee Cultures</em></h1>
+    <p class="about-hero-sub">From the highland farms of East Africa to the cezves of Turkish coffee houses — we connect the world's oldest coffee origins with its most revered brewing tradition.</p>
+  </div>
+</section>
+
+<section class="mission-section">
+  <div class="mission-visual">
+    <div class="mission-map">
+      <div class="map-continent c-africa">🌍</div>
+      <div class="map-dot africa"></div>
+      <div class="map-label l-africa">East Africa</div>
+      <div class="map-line"></div>
+      <div class="map-dot turkey"></div>
+      <div class="map-label l-turkey">Turkey</div>
+    </div>
+  </div>
+  <div class="mission-text">
+    <h2>The Journey</h2>
+    <p>Coffee was born in Ethiopia. For centuries, the highlands of East Africa have produced beans of extraordinary complexity — floral, fruity, layered with nuance. Yet most of this coffee disappears into commodity blends, its character lost.</p>
+    <p>Meanwhile, Turkish coffee — the world's most intimate brewing method — demands beans of exceptional quality. The ultra-fine grind and slow cezve extraction reveal every subtlety, every flaw.</p>
+    <p>Ethiopian Ball Clippers exists at this intersection. We source directly from cooperatives across Africa and deliver single-origin coffees specifically selected for Turkish brewing excellence.</p>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <h2>Our Journey</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">2024</div>
+      <div class="timeline-content">
+        <h3>The First Cezve</h3>
+        <p>A chance encounter with Ethiopian Yirgacheffe brewed in a cezve changed everything. The floral notes that emerge in Turkish brewing were unlike anything we'd tasted.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2025</div>
+      <div class="timeline-content">
+        <h3>Direct Sourcing Begins</h3>
+        <p>First trips to Ethiopia and Kenya. Built relationships with 12 cooperatives. Began cupping sessions with Turkish coffee shop owners to identify ideal profiles.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026</div>
+      <div class="timeline-content">
+        <h3>Ethiopian Ball Clippers Launches</h3>
+        <p>Full catalog of 40+ African coffees, each scored and profiled specifically for Turkish brewing. Direct partnerships with 25+ farm cooperatives across 6 countries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values-section">
+  <h2>What We Stand For</h2>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">🤝</div>
+      <div class="value-title">Direct Trade</div>
+      <div class="value-desc">We buy directly from cooperatives and farmer unions, ensuring fair prices and transparent supply chains. No middlemen, no commodity markets.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔬</div>
+      <div class="value-title">Turkish-Optimized</div>
+      <div class="value-desc">Every coffee is cupped specifically for Turkish brewing. We score aroma, body, and finish through a cezve — not just standard SCA protocols.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌱</div>
+      <div class="value-title">Sustainability</div>
+      <div class="value-desc">Shade-grown, organic-compatible farming practices. We invest in soil health and water conservation programs at origin.</div>
+    </div>
+  </div>
+</section>
+
+<section class="partners-section">
+  <h2>Our Origins</h2>
+  <p class="partners-sub">Direct partnerships across 6 African coffee-producing nations</p>
+  <div class="partners-grid">
+    <div class="partner-card">
+      <div class="partner-flag">🇪🇹</div>
+      <div class="partner-country">Ethiopia</div>
+      <div class="partner-count">12 cooperatives</div>
+      <div class="partner-regions">Yirgacheffe · Sidamo · Harrar · Guji · Limu</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-flag">🇰🇪</div>
+      <div class="partner-country">Kenya</div>
+      <div class="partner-count">5 estates</div>
+      <div class="partner-regions">Nyeri · Kirinyaga · Embu · Murang'a</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-flag">🇷🇼</div>
+      <div class="partner-country">Rwanda</div>
+      <div class="partner-count">4 cooperatives</div>
+      <div class="partner-regions">Huye · Nyamasheke · Gakenke</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-flag">🇹🇿</div>
+      <div class="partner-country">Tanzania</div>
+      <div class="partner-count">3 estates</div>
+      <div class="partner-regions">Kilimanjaro · Arusha · Mbeya</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-flag">🇧🇮</div>
+      <div class="partner-country">Burundi</div>
+      <div class="partner-count">2 cooperatives</div>
+      <div class="partner-regions">Kayanza · Ngozi</div>
+    </div>
+    <div class="partner-card">
+      <div class="partner-flag">🇺🇬</div>
+      <div class="partner-country">Uganda</div>
+      <div class="partner-count">2 cooperatives</div>
+      <div class="partner-regions">Mount Elgon · Rwenzori</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">ETHIOPIAN BALL CLIPPERS</div>
+  <div class="footer-copy">© 2026 Ethiopian Ball Clippers. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

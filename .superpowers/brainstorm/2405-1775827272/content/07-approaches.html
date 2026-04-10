@@ -1,0 +1,43 @@
+<h2>3 Approaches to Build This</h2>
+<p class="subtitle">Same vision, different tech stacks. Each has trade-offs for your showstopper animation goals and Netlify deployment.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Pure HTML/CSS/JS + Three.js + GSAP</h3>
+      <p><strong>Recommended.</strong> Single static site — no framework overhead. Three.js for 3D coffee elements, GSAP + ScrollTrigger for cinematic scroll animations, particle effects via canvas. Deploys instantly to Netlify as static files. Maximum creative control, fastest load times, zero build step complexity.</p>
+      <div style="margin-top: 12px; padding: 10px; background: rgba(212, 165, 116, 0.1); border-radius: 6px; border-left: 3px solid #d4a574;">
+        <strong style="color: #d4a574;">Pros:</strong> Full animation control, instant Netlify deploy, no dependencies to break, lightweight<br>
+        <strong style="color: #d4a574;">Cons:</strong> No component reuse (fine for 5 pages), manual routing
+      </div>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Astro + Three.js + GSAP</h3>
+      <p>Static site generator with component architecture. Same animation libraries but with proper templating, shared layouts, and markdown blog support. Builds to static HTML for Netlify. Good if blog content will grow.</p>
+      <div style="margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border-left: 3px solid rgba(255,255,255,0.2);">
+        <strong>Pros:</strong> Component reuse, built-in blog/markdown, great DX<br>
+        <strong>Cons:</strong> Build step required, framework learning curve, slightly more complex deploy
+      </div>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Next.js + React Three Fiber + Framer Motion</h3>
+      <p>Full React framework. React Three Fiber for 3D, Framer Motion for UI animations. Most "modern" stack but heaviest. Requires Netlify adapter or static export.</p>
+      <div style="margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 6px; border-left: 3px solid rgba(255,255,255,0.2);">
+        <strong>Pros:</strong> Largest ecosystem, easy to add e-commerce later, component-driven<br>
+        <strong>Cons:</strong> Heaviest bundle, slower initial load, overkill for 5 static pages, more complex Netlify config
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px; padding: 16px; background: rgba(212, 165, 116, 0.08); border: 1px solid rgba(212, 165, 116, 0.2); border-radius: 8px;">
+  <h3 style="color: #d4a574; margin-top: 0;">My Recommendation: Option A</h3>
+  <p style="margin-bottom: 0;">For a 5-page showstopper site deploying to Netlify, pure HTML/CSS/JS with Three.js and GSAP gives you maximum animation control with zero framework overhead. The site is a visual experience first — a framework would just add weight without benefit. You can always migrate to Astro later if the blog grows.</p>
+</div>
