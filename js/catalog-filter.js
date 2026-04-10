@@ -47,6 +47,7 @@ function renderCard(c) {
 
 // --- Render all cards ---
 const grid = document.querySelector('.catalog-grid');
+if (!grid) { console.warn('catalog-filter: .catalog-grid not found'); }
 
 function renderGrid(list) {
   if (list.length === 0) {
@@ -60,14 +61,12 @@ function renderGrid(list) {
 // --- GSAP animation helper ---
 function animateCards() {
   if (typeof gsap === 'undefined') return;
-  gsap.from(grid.querySelectorAll('.coffee-card'), {
-    opacity: 0,
-    y: 40,
-    duration: 0.6,
-    stagger: 0.1,
-    ease: 'power3.out',
-    clearProps: 'all'
-  });
+  const cards = grid.querySelectorAll('.coffee-card');
+  if (!cards.length) return;
+  gsap.fromTo(cards,
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }
+  );
 }
 
 // --- State ---
