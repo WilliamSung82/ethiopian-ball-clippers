@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Coffee Detail — Ethiopian Ball Clippers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+
+  <!-- Floating background -->
+  <div class="floating-bg"></div>
+
+  <!-- Content layer -->
+  <div class="content-layer">
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">ETHIOPIAN <span>BALL CLIPPERS</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="coffees.html">Coffees</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">&rsaquo;</span><a href="coffees.html">Coffees</a><span class="sep">&rsaquo;</span><span id="breadcrumb-name">Loading...</span>
+    </div>
+
+    <!-- Detail Hero -->
+    <section class="detail-hero">
+      <div class="detail-visual">
+        <div class="detail-visual-bg" id="visual-bg"></div>
+        <div class="detail-visual-glow"></div>
+        <div class="detail-bean"></div>
+        <div class="detail-flag" id="detail-flag"></div>
+        <div class="detail-badge" id="detail-badge"></div>
+      </div>
+
+      <div class="detail-info">
+        <div class="detail-origin" id="detail-origin"></div>
+        <h1 class="detail-name" id="detail-name"></h1>
+        <p class="detail-region" id="detail-region"></p>
+        <p class="detail-desc" id="detail-desc"></p>
+
+        <!-- Specs Grid -->
+        <div class="specs-grid">
+          <div class="spec"><div class="spec-label">Roast</div><div class="spec-value" id="spec-roast"></div></div>
+          <div class="spec"><div class="spec-label">Process</div><div class="spec-value" id="spec-process"></div></div>
+          <div class="spec"><div class="spec-label">Varietal</div><div class="spec-value" id="spec-varietal"></div></div>
+          <div class="spec"><div class="spec-label">Altitude</div><div class="spec-value" id="spec-altitude"></div></div>
+          <div class="spec"><div class="spec-label">Harvest</div><div class="spec-value" id="spec-harvest"></div></div>
+          <div class="spec"><div class="spec-label">SCA Score</div><div class="spec-value" id="spec-sca"></div></div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="detail-ctas">
+          <a href="contact.html" class="btn-primary">Request Sample</a>
+          <a href="contact.html" class="btn-secondary">Get Quote</a>
+        </div>
+
+        <!-- Flavor Tags -->
+        <div class="flavor-tags" id="flavor-tags"></div>
+      </div>
+    </section>
+
+    <!-- Tasting Profile -->
+    <section class="tasting-section">
+      <div class="section-label">Analysis</div>
+      <h2 class="section-title">Tasting Profile</h2>
+      <div class="tasting-grid">
+        <div class="radar-container">
+          <div class="radar-ring r1"></div>
+          <div class="radar-ring r2"></div>
+          <div class="radar-ring r3"></div>
+          <div class="radar-shape">
+            <svg viewBox="0 0 360 360" id="radar-svg">
+              <polygon id="radar-polygon" fill="rgba(212,165,116,0.1)" stroke="rgba(212,165,116,0.4)" stroke-width="1.5"/>
+              <g id="radar-dots"></g>
+            </svg>
+          </div>
+          <div class="radar-label rl-aroma">Aroma</div>
+          <div class="radar-label rl-acidity">Acidity</div>
+          <div class="radar-label rl-sweetness">Sweetness</div>
+          <div class="radar-label rl-body">Body</div>
+          <div class="radar-label rl-finish">Finish</div>
+          <div class="radar-label rl-balance">Balance</div>
+        </div>
+
+        <div class="tasting-bars" id="tasting-bars"></div>
+      </div>
+    </section>
+
+    <!-- Turkish Brewing Guide -->
+    <section class="brewing-section">
+      <div class="section-label">Preparation</div>
+      <h2 class="section-title">Turkish Brewing Guide</h2>
+      <div class="brewing-grid">
+        <div class="brew-step">
+          <div class="brew-icon">&#9878;&#65039;</div>
+          <div class="brew-label">Dose</div>
+          <div class="brew-value" id="brew-dose"></div>
+          <div class="brew-desc">Per 65ml water. Extra-fine grind, powdery consistency.</div>
+        </div>
+        <div class="brew-step">
+          <div class="brew-icon">&#128167;</div>
+          <div class="brew-label">Water</div>
+          <div class="brew-value" id="brew-water"></div>
+          <div class="brew-desc">Cold, filtered water. Fill cezve to just below the neck.</div>
+        </div>
+        <div class="brew-step">
+          <div class="brew-icon">&#128293;</div>
+          <div class="brew-label">Heat</div>
+          <div class="brew-value" id="brew-heat"></div>
+          <div class="brew-desc">Slow heat, never boil. Remove when foam rises to the top.</div>
+        </div>
+        <div class="brew-step">
+          <div class="brew-icon">&#9201;&#65039;</div>
+          <div class="brew-label">Time</div>
+          <div class="brew-value" id="brew-time"></div>
+          <div class="brew-desc">Patience is key. Let the foam develop slowly and evenly.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supplier / The Source -->
+    <section class="supplier-section">
+      <div class="section-label">Direct Trade</div>
+      <h2 class="section-title">The Source</h2>
+      <div class="supplier-card">
+        <div class="supplier-avatar">&#127807;</div>
+        <div>
+          <div class="supplier-name" id="supplier-name"></div>
+          <div class="supplier-location" id="supplier-location"></div>
+          <p class="supplier-desc" id="supplier-desc"></p>
+          <div class="supplier-stats" id="supplier-stats"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-logo">ETHIOPIAN BALL CLIPPERS</div>
+      <div class="footer-copy">&copy; 2026 Ethiopian Ball Clippers. All rights reserved.</div>
+    </footer>
+
+  </div><!-- /content-layer -->
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Main (nav scroll, cursor, floating bg) -->
+  <script src="js/main.js"></script>
+
+  <!-- Detail page logic -->
+  <script type="module">
+    import { coffees } from './js/data.js';
+    import { initAnimations } from './js/animations.js';
+
+    const params = new URLSearchParams(window.location.search);
+    const coffeeId = params.get('id');
+    const coffee = coffees.find(c => c.id === coffeeId) || coffees[0];
+
+    // --- Page title ---
+    document.getElementById('page-title').textContent = `${coffee.name} — Ethiopian Ball Clippers`;
+
+    // --- Breadcrumb ---
+    document.getElementById('breadcrumb-name').textContent = coffee.name;
+
+    // --- Visual ---
+    document.getElementById('visual-bg').style.background = coffee.gradient;
+    document.getElementById('detail-flag').textContent = coffee.flag;
+    document.getElementById('detail-badge').textContent = coffee.badge;
+
+    // --- Info ---
+    document.getElementById('detail-origin').textContent = `${coffee.country} \u00b7 ${coffee.region.split(',')[0]}`;
+    document.getElementById('detail-name').textContent = coffee.name;
+    document.getElementById('detail-region').textContent = `${coffee.region} \u2014 ${coffee.altitude} elevation`;
+    document.getElementById('detail-desc').textContent = coffee.longDescription;
+
+    // --- Specs ---
+    document.getElementById('spec-roast').textContent = coffee.roast;
+    document.getElementById('spec-process').textContent = coffee.process;
+    document.getElementById('spec-varietal').textContent = coffee.varietal;
+    document.getElementById('spec-altitude').textContent = coffee.altitude;
+    document.getElementById('spec-harvest').textContent = coffee.harvest;
+    document.getElementById('spec-sca').textContent = coffee.scaScore;
+
+    // --- Flavor tags ---
+    const flavorContainer = document.getElementById('flavor-tags');
+    coffee.flavors.forEach(f => {
+      const span = document.createElement('span');
+      span.className = 'ftag';
+      span.textContent = f;
+      flavorContainer.appendChild(span);
+    });
+
+    // --- Tasting bars ---
+    const tastingKeys = ['aroma', 'acidity', 'sweetness', 'body', 'finish', 'balance'];
+    const barsContainer = document.getElementById('tasting-bars');
+    tastingKeys.forEach(key => {
+      const val = coffee.tasting[key];
+      const pct = (val / 10) * 100;
+      const item = document.createElement('div');
+      item.className = 'note-item';
+      item.innerHTML = `
+        <span class="note-label">${key}</span>
+        <div class="note-bar-track"><div class="note-bar" style="width: 0%;" data-width="${pct}%"></div></div>
+        <span class="note-value">${val}</span>
+      `;
+      barsContainer.appendChild(item);
+    });
+
+    // Animate bars on load
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        document.querySelectorAll('.note-bar').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+      }, 300);
+    });
+
+    // --- Radar chart ---
+    // 6-axis radar: aroma (top), acidity (top-right), sweetness (bottom-right),
+    // body (bottom-right-ish), finish (bottom-left-ish), balance (top-left)
+    const cx = 180, cy = 180, maxR = 150;
+    const angles = [
+      -90,   // aroma (top)
+      -30,   // acidity (top-right)
+       30,   // sweetness (bottom-right)
+       90,   // body (bottom)
+      150,   // finish (bottom-left)
+      210    // balance (top-left)
+    ];
+
+    function polarToCart(angleDeg, radius) {
+      const rad = (angleDeg * Math.PI) / 180;
+      return {
+        x: cx + radius * Math.cos(rad),
+        y: cy + radius * Math.sin(rad)
+      };
+    }
+
+    const points = tastingKeys.map((key, i) => {
+      const val = coffee.tasting[key];
+      const r = (val / 10) * maxR;
+      return polarToCart(angles[i], r);
+    });
+
+    const pointsStr = points.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+    document.getElementById('radar-polygon').setAttribute('points', pointsStr);
+
+    const dotsG = document.getElementById('radar-dots');
+    points.forEach(p => {
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', p.x.toFixed(1));
+      circle.setAttribute('cy', p.y.toFixed(1));
+      circle.setAttribute('r', '4');
+      circle.setAttribute('fill', '#d4a574');
+      dotsG.appendChild(circle);
+    });
+
+    // --- Brewing guide ---
+    document.getElementById('brew-dose').textContent = coffee.brewing.dose;
+    document.getElementById('brew-water').textContent = coffee.brewing.water;
+    document.getElementById('brew-heat').textContent = coffee.brewing.heat;
+    document.getElementById('brew-time').textContent = coffee.brewing.time;
+
+    // --- Supplier ---
+    const s = coffee.supplier;
+    document.getElementById('supplier-name').textContent = s.name;
+    document.getElementById('supplier-location').textContent = '\u{1F4CD} ' + s.location;
+    document.getElementById('supplier-desc').textContent =
+      `A network of ${s.cooperatives} cooperatives representing over ${s.farmers.toLocaleString()} farming families. ` +
+      `Growing at ${s.altitude} altitude. ${s.certifications}.`;
+
+    const statsContainer = document.getElementById('supplier-stats');
+    const stats = [
+      { label: 'farmers', value: s.farmers.toLocaleString() },
+      { label: 'cooperatives', value: s.cooperatives },
+      { label: 'altitude', value: s.altitude },
+      { label: 'certification', value: s.certifications }
+    ];
+    stats.forEach(st => {
+      const span = document.createElement('span');
+      span.className = 'supplier-stat';
+      span.innerHTML = `<strong>${st.value}</strong> ${st.label}`;
+      statsContainer.appendChild(span);
+    });
+
+    // --- Init GSAP animations ---
+    initAnimations();
+  </script>
+
+</body>
+</html>

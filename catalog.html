@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Coffees — Ethiopian Ball Clippers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+
+  <!-- Floating background -->
+  <div class="floating-bg"></div>
+
+  <!-- Content layer -->
+  <div class="content-layer">
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-logo">ETHIOPIAN <span>BALL CLIPPERS</span></div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="catalog.html" class="active">Coffees</a>
+        <a href="about.html">Our Story</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Page header -->
+    <div class="page-header">
+      <h1>Our Coffees</h1>
+      <p>Explore our curated collection of African single-origin coffees, each selected for exceptional quality in Turkish brewing.</p>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar">
+      <span class="filter-label">Origin</span>
+      <button class="filter-btn active" data-origin="All">All</button>
+      <button class="filter-btn" data-origin="Ethiopia">Ethiopia</button>
+      <button class="filter-btn" data-origin="Kenya">Kenya</button>
+      <button class="filter-btn" data-origin="Rwanda">Rwanda</button>
+      <button class="filter-btn" data-origin="Tanzania">Tanzania</button>
+      <button class="filter-btn" data-origin="Uganda">Uganda</button>
+      <button class="filter-btn" data-origin="Burundi">Burundi</button>
+      <div class="filter-divider"></div>
+      <span class="filter-label">Profile</span>
+      <button class="filter-btn" data-profile="Fruity">Fruity</button>
+      <button class="filter-btn" data-profile="Floral">Floral</button>
+      <button class="filter-btn" data-profile="Chocolatey">Chocolatey</button>
+      <button class="filter-btn" data-profile="Spiced">Spiced</button>
+      <input class="search-input" type="text" placeholder="Search coffees...">
+    </div>
+
+    <!-- Coffee grid (populated by JS) -->
+    <div class="catalog-grid"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-logo">ETHIOPIAN BALL CLIPPERS</div>
+      <div class="footer-copy">&copy; 2026 Ethiopian Ball Clippers. All rights reserved.</div>
+    </footer>
+
+  </div>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Main (regular script) -->
+  <script src="js/main.js"></script>
+
+  <!-- ES modules -->
+  <script type="module">
+    import { initAnimations } from './js/animations.js';
+    import './js/catalog-filter.js';
+    initAnimations();
+  </script>
+
+</body>
+</html>

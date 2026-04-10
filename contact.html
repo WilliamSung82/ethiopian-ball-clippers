@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &mdash; Ethiopian Ball Clippers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+  <div class="floating-bg"></div>
+
+  <div class="content-layer">
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-logo">ETHIOPIAN BALL CLIPPERS</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="catalog.html">Coffees</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="contact-hero">
+      <h1 class="hero-title">Get in <em>Touch</em></h1>
+      <p class="hero-sub">Whether you're looking to sample our coffees, request a wholesale quote, or simply say hello &mdash; we'd love to hear from you.</p>
+    </section>
+
+    <!-- Tab Switcher -->
+    <div class="tab-switcher">
+      <div class="tab-container">
+        <button class="tab-btn active" data-tab="samples">Request Samples</button>
+        <button class="tab-btn" data-tab="quote">Get a Quote</button>
+        <button class="tab-btn" data-tab="general">General Inquiry</button>
+      </div>
+    </div>
+
+    <!-- ======================== SAMPLES TAB ======================== -->
+    <div class="tab-content active" id="samples">
+      <div class="form-grid">
+        <div class="form-card">
+          <h3>Request Coffee Samples</h3>
+          <p class="form-subtitle">Select up to 3 coffees you'd like to taste. We'll ship complimentary 50g samples to qualified businesses.</p>
+
+          <!-- Sample Picker -->
+          <div class="form-group">
+            <div class="sample-picker-label">Choose Your Coffees</div>
+            <div class="sample-picker-hint">Select up to 3 samples</div>
+            <div class="sample-picker">
+
+              <div class="sample-card" data-coffee="yirgacheffe-kochere">
+                <span class="sample-flag">&#127466;&#127481;</span>
+                <div class="sample-info">
+                  <div class="sample-name">Yirgacheffe Kochere</div>
+                  <div class="sample-origin">Ethiopia</div>
+                </div>
+                <div class="check-circle">
+                  <svg viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#0a0705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+
+              <div class="sample-card" data-coffee="nyeri-aa">
+                <span class="sample-flag">&#127472;&#127466;</span>
+                <div class="sample-info">
+                  <div class="sample-name">Nyeri AA</div>
+                  <div class="sample-origin">Kenya</div>
+                </div>
+                <div class="check-circle">
+                  <svg viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#0a0705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+
+              <div class="sample-card" data-coffee="huye-red-bourbon">
+                <span class="sample-flag">&#127479;&#127484;</span>
+                <div class="sample-info">
+                  <div class="sample-name">Huye Red Bourbon</div>
+                  <div class="sample-origin">Rwanda</div>
+                </div>
+                <div class="check-circle">
+                  <svg viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#0a0705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+
+              <div class="sample-card" data-coffee="kilimanjaro-peaberry">
+                <span class="sample-flag">&#127481;&#127487;</span>
+                <div class="sample-info">
+                  <div class="sample-name">Kilimanjaro Peaberry</div>
+                  <div class="sample-origin">Tanzania</div>
+                </div>
+                <div class="check-circle">
+                  <svg viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#0a0705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+
+              <div class="sample-card" data-coffee="sidamo-guji">
+                <span class="sample-flag">&#127466;&#127481;</span>
+                <div class="sample-info">
+                  <div class="sample-name">Sidamo Guji</div>
+                  <div class="sample-origin">Ethiopia</div>
+                </div>
+                <div class="check-circle">
+                  <svg viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#0a0705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+
+              <div class="sample-card" data-coffee="kayanza-long-miles">
+                <span class="sample-flag">&#127463;&#127470;</span>
+                <div class="sample-info">
+                  <div class="sample-name">Kayanza Long Miles</div>
+                  <div class="sample-origin">Burundi</div>
+                </div>
+                <div class="check-circle">
+                  <svg viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#0a0705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Form Fields -->
+          <form data-netlify="true" name="sample-request">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="sample-name">Your Name</label>
+                <input class="form-input" type="text" id="sample-name" name="name" placeholder="Full name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="sample-shop">Shop / Business Name</label>
+                <input class="form-input" type="text" id="sample-shop" name="shop" placeholder="Business name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="sample-email">Email</label>
+                <input class="form-input" type="email" id="sample-email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="sample-phone">Phone</label>
+                <input class="form-input" type="tel" id="sample-phone" name="phone" placeholder="+90 555 000 0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sample-address">Shipping Address</label>
+              <input class="form-input" type="text" id="sample-address" name="address" placeholder="Full shipping address" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sample-notes">Additional Notes</label>
+              <textarea class="form-textarea" id="sample-notes" name="notes" placeholder="Any preferences or questions..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send Sample Request</button>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="info-sidebar">
+          <div class="info-card">
+            <div class="info-icon">&#9749;</div>
+            <div class="info-body">
+              <div class="info-title">What You'll Receive</div>
+              <div class="info-desc">Complimentary 50g samples of each selected coffee, freshly roasted and ground for Turkish brewing.</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#128666;</div>
+            <div class="info-body">
+              <div class="info-title">Delivery Timeline</div>
+              <div class="info-desc">Samples are typically roasted within 48 hours and shipped via express courier. Expect delivery in 3&ndash;5 business days.</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#127793;</div>
+            <div class="info-body">
+              <div class="info-title">After Tasting</div>
+              <div class="info-desc">Our team will follow up to discuss your impressions and help you find the perfect coffees for your menu.</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#128231;</div>
+            <div class="info-body">
+              <div class="info-title">Direct Contact</div>
+              <div class="info-desc"><a href="mailto:hello@ethiopianballclippers.com">hello@ethiopianballclippers.com</a><br><a href="tel:+902125550142">+90 212 555 0142</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== QUOTE TAB ======================== -->
+    <div class="tab-content" id="quote">
+      <div class="form-grid">
+        <div class="form-card">
+          <h3>Request a Wholesale Quote</h3>
+          <p class="form-subtitle">Tell us about your business and volume needs. We'll prepare a custom pricing proposal within 24 hours.</p>
+
+          <form data-netlify="true" name="quote-request">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="quote-name">Your Name</label>
+                <input class="form-input" type="text" id="quote-name" name="name" placeholder="Full name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="quote-business">Business Name</label>
+                <input class="form-input" type="text" id="quote-business" name="business" placeholder="Business name" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="quote-email">Email</label>
+                <input class="form-input" type="email" id="quote-email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="quote-phone">Phone</label>
+                <input class="form-input" type="tel" id="quote-phone" name="phone" placeholder="+90 555 000 0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="quote-coffee">Coffee Selection</label>
+              <select class="form-select" id="quote-coffee" name="coffee" required>
+                <option value="" disabled selected>Choose a coffee</option>
+                <option value="yirgacheffe-kochere">Yirgacheffe Kochere</option>
+                <option value="nyeri-aa">Nyeri AA</option>
+                <option value="huye-red-bourbon">Huye Red Bourbon</option>
+                <option value="kilimanjaro-peaberry">Kilimanjaro Peaberry</option>
+                <option value="sidamo-guji">Sidamo Guji</option>
+                <option value="kayanza-long-miles">Kayanza Long Miles</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="quote-volume">Estimated Volume</label>
+                <select class="form-select" id="quote-volume" name="volume" required>
+                  <option value="" disabled selected>Select volume</option>
+                  <option value="5kg">5 kg</option>
+                  <option value="10kg">10 kg</option>
+                  <option value="25kg">25 kg</option>
+                  <option value="50kg">50 kg</option>
+                  <option value="100kg+">100+ kg</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="quote-frequency">Order Frequency</label>
+                <select class="form-select" id="quote-frequency" name="frequency" required>
+                  <option value="" disabled selected>Select frequency</option>
+                  <option value="one-time">One-time order</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="biweekly">Bi-weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="quote-notes">Additional Notes</label>
+              <textarea class="form-textarea" id="quote-notes" name="notes" placeholder="Specific requirements, grind preferences, etc..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Request Quote</button>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="info-sidebar">
+          <div class="info-card">
+            <div class="info-icon">&#128200;</div>
+            <div class="info-body">
+              <div class="info-title">Volume Pricing</div>
+              <div class="info-desc">Competitive wholesale pricing with tiered discounts. The more you order, the better your rate.</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#128230;</div>
+            <div class="info-body">
+              <div class="info-title">Flexible Delivery</div>
+              <div class="info-desc">Scheduled deliveries across Turkey and international shipping available. We work around your schedule.</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#129309;</div>
+            <div class="info-body">
+              <div class="info-title">Dedicated Support</div>
+              <div class="info-desc">Every wholesale partner gets a dedicated account manager for ordering, quality feedback, and menu consultation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== GENERAL TAB ======================== -->
+    <div class="tab-content" id="general">
+      <div class="form-grid">
+        <div class="form-card">
+          <h3>Send Us a Message</h3>
+          <p class="form-subtitle">Have a question, feedback, or just want to chat about coffee? We're all ears.</p>
+
+          <form data-netlify="true" name="general-inquiry">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="general-name">Your Name</label>
+                <input class="form-input" type="text" id="general-name" name="name" placeholder="Full name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="general-email">Email</label>
+                <input class="form-input" type="email" id="general-email" name="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="general-subject">Subject</label>
+              <select class="form-select" id="general-subject" name="subject" required>
+                <option value="" disabled selected>Choose a subject</option>
+                <option value="partnership">Partnership Inquiry</option>
+                <option value="feedback">Product Feedback</option>
+                <option value="press">Press &amp; Media</option>
+                <option value="careers">Careers</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="general-message">Message</label>
+              <textarea class="form-textarea" id="general-message" name="message" placeholder="Write your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="info-sidebar">
+          <div class="info-card">
+            <div class="info-icon">&#128231;</div>
+            <div class="info-body">
+              <div class="info-title">Email Us</div>
+              <div class="info-desc"><a href="mailto:hello@ethiopianballclippers.com">hello@ethiopianballclippers.com</a></div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#128222;</div>
+            <div class="info-body">
+              <div class="info-title">Call Us</div>
+              <div class="info-desc"><a href="tel:+902125550142">+90 212 555 0142</a></div>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#128205;</div>
+            <div class="info-body">
+              <div class="info-title">Visit Us</div>
+              <div class="info-desc">Karakoy Mumhane Cad. No:42<br>Beyoglu, Istanbul 34425<br>Turkey</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== FAQ ======================== -->
+    <section class="faq-section">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Frequently Asked</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span>What is the minimum order quantity?</span>
+          <svg class="faq-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="faq-a">
+          <p>Our minimum wholesale order is 5kg per coffee. For sample requests, there is no minimum &mdash; we're happy to send complimentary tasting samples to qualified businesses.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span>Do you ship internationally?</span>
+          <svg class="faq-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="faq-a">
+          <p>Yes, we ship worldwide. Domestic orders within Turkey arrive in 2&ndash;3 business days, while international shipments typically take 5&ndash;10 business days depending on destination.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span>Can I get my coffee ground for Turkish brewing?</span>
+          <svg class="faq-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="faq-a">
+          <p>Absolutely. Turkish grind is our specialty. All coffees can be ordered as whole bean or ground to an ultra-fine Turkish specification using our precision Mahlkonig grinders.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span>How fresh is the coffee when it arrives?</span>
+          <svg class="faq-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="faq-a">
+          <p>We roast to order. Your coffee is roasted within 48 hours of your order and shipped immediately, so it arrives at peak freshness. Every bag is stamped with its roast date.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span>Do you have organic or fair trade certifications?</span>
+          <svg class="faq-arrow" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="faq-a">
+          <p>Many of our coffees carry organic and fair trade certifications. We prioritize direct trade relationships, which often exceed fair trade standards. Specific certifications are listed on each coffee's detail page.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-logo">ETHIOPIAN BALL CLIPPERS</div>
+      <div class="footer-copy">&copy; 2026 Ethiopian Ball Clippers. All rights reserved.</div>
+    </footer>
+
+  </div>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.4/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Main (nav scroll, cursor, floating bg) -->
+  <script src="js/main.js"></script>
+
+  <!-- ES Modules -->
+  <script type="module">
+    import { switchTab } from './js/contact.js';
+    import { initAnimations } from './js/animations.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initAnimations();
+    });
+  </script>
+
+</body>
+</html>
